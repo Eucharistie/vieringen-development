@@ -163,10 +163,13 @@
 				const player = new YT.Player('player', {
 					height: '360',
 					width: '640',
-					videoId: '5RvOtmhrt1k', //live: 5RvOtmhrt1k
+					videoId: 'iSl701PWwKo', //live: 5RvOtmhrt1k
 					events: {
 						'onReady': onPlayerReady,
 //						'onStateChange': onPlayerStateChange
+					},
+					playerVars: {
+						playsinline: 1
 					}
 				});
 				window.ytPlayer = player
