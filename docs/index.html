@@ -2,10 +2,11 @@
 	<head>
 		<style>
 			html {
-					font-family: "Optima", serif;
-					--title-space: 20px;
-					--paragraph-space: 8px;
-					--window-margin: 20px;
+				font-family: "Optima", serif;
+				--title-space: 20px;
+				--paragraph-space: 8px;
+				--window-margin: 20px;
+				text-align: center;
 			}
 
 			html, body {
@@ -30,6 +31,10 @@
 			}
 			h1, h3 {
 					font-variant: small-caps
+			}
+			h1 {
+				font-size: 32px;
+				text-align: left;
 			}
 			h2 {
 				font-size: 23px;
@@ -71,7 +76,7 @@
 			
 			section.mass-text {
 /*				margin: 1em;*/
-				
+				text-align: left;
 			}
 			
 			ol li.refrain::before, .response::before {
@@ -95,7 +100,7 @@
 /*				width: 100% !important;*/
 			}
 			
-			#player-container {
+			#player {
 				height: 360px;
 				width: 640px;
 				background: black;
@@ -103,20 +108,39 @@
 			}
 			
 			section.mass-text {
-				min-width: 300px;
-				max-width: calc(100vw - 640px - var(--window-margin) * 2);
-				height: 360px;
 				overflow-y: scroll;
 				display: inline-block;
-				padding: 0 0 0 1em;
 				box-sizing: border-box;
 			}
+			
+			@media only screen and (max-width: 680px) {
+				iframe {
+					width: calc(100vw - 40px) !important;
+				}
+			}
+			
+			@media only screen and (min-width: 980px) {
+				section.mass-text {
+					min-width: 300px;
+					max-width: calc(100vw - 640px - var(--window-margin) * 2);
+					height: 360px;
+					padding: 0 0 0 1em;
+				}
+			}
+
+			@media only screen and (max-width: 979px) {
+				section.mass-text {
+					margin-top: 1.5em;
+					height: calc(100vh - 360px - 32px - 1.5em - var(--title-space) - var(--window-margin) * 2)
+				}
+			}
+
 		</style>
 		<script src="https://www.youtube.com/iframe_api"></script>
 		<script>
 			function onYouTubeIframeAPIReady() {
 				console.log('api is ready')
-				const player = new YT.Player('player-container', {
+				const player = new YT.Player('player', {
 					height: '360',
 					width: '640',
 					videoId: 'iSl701PWwKo', //live: 5RvOtmhrt1k
@@ -136,7 +160,7 @@
 	</head>
 	<body>
 		<h1>3e zondag van de Veertigdagentijd</h1>
-		<div id="player-container"></div><section class="mass-text">
+		<div id="player"></div><section class="mass-text">
 			<h2>Openingsritus</h2>
 			<p>In de Naam van de Vader en de Zoon en de heilige Geest.</p>
 			<p class="response"> Amen.</p>
