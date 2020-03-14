@@ -121,17 +121,15 @@
 			}
 			
 			@media only screen and (min-width: 980px) {
+				body {
+					vertical-align: middle;
+				}
+				
 				section.mass-text {
 					min-width: 300px;
 					max-width: calc(100vw - 640px - var(--window-margin) * 2);
-					height: 360px;
+/*					height: 360px;*/
 					padding: 0 0 0 1em;
-				}
-				
-				@media only screen and (max-height: 600px) {
-					section.mass-text {
-						max-width: calc(100vw - 640px - var(--window-margin) * 2);
-					}
 				}
 			}
 
@@ -145,15 +143,16 @@
 					section.mass-text {
 						height: calc(100vh - 90px - 32px - 1.5em - var(--title-space) - var(--window-margin) * 2)
 					}
+					
+					@media only screen and (max-height: 600px) {
+						iframe {
+							height: 90px !important;
+							width: 160px !important;
+						}
+					}
 				}
 			}
 			
-			@media only screen and (max-height: 600px) {
-				iframe {
-					height: 90px !important;
-					width: 160px !important;
-				}
-			}
 
 		</style>
 		<script src="https://www.youtube.com/iframe_api"></script>
@@ -163,7 +162,7 @@
 				const player = new YT.Player('player', {
 					height: '360',
 					width: '640',
-					videoId: 'iSl701PWwKo', //live: 5RvOtmhrt1k
+					videoId: '5RvOtmhrt1k', //live: 5RvOtmhrt1k
 					events: {
 						'onReady': onPlayerReady,
 //						'onStateChange': onPlayerStateChange
