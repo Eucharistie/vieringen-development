@@ -3,12 +3,19 @@
 		<style>
 			html {
 					font-family: "Optima", serif;
-					--title-space: 4mm;
-					--paragraph-space: 2mm;
+					--title-space: 20px;
+					--paragraph-space: 8px;
+					--window-margin: 20px;
 			}
 
 			html, body {
-					hanging-punctuation: allow-end;
+				hanging-punctuation: allow-end;
+				margin: 0;
+				padding: 0;
+			}
+			
+			html {
+				margin: var(--window-margin);
 			}
 
 			@font-face {
@@ -22,16 +29,20 @@
 					margin-bottom: var(--paragraph-space);
 			}
 			h1, h3 {
-					font-size: 5mm;
 					font-variant: small-caps
 			}
 			h2 {
-					font-size: 6mm;
-					margin-top: 0;
+				font-size: 23px;
+				color: #ad0000;
+				text-align: center;
+			}
+			h3 {
+				border-bottom: 1px solid #DDD;
+				font-size: 23px;
 			}
 			
-			h3 {
-				border-bottom: 1px solid #DDD
+			h1, h2:first-of-type {
+				margin-top: 0;
 			}
 			
 			h3, .stick {
@@ -48,16 +59,18 @@
 			}
 
 			p, li, td {
-					font-size: 3.6mm;
+					font-size: 17px;
 					line-height: 1.2;
 			}
 
 			p {
 					text-align: justify;
+				  margin-top: var(--paragraph-space);
+    			margin-bottom: var(--paragraph-space);
 			}
 			
 			section.mass-text {
-				padding: 1em;
+/*				margin: 1em;*/
 				
 			}
 			
@@ -77,19 +90,36 @@
 			.hidden {
 				display: none;
 			}
+			
+			iframe {
+/*				width: 100% !important;*/
+			}
+			
+			#player-container {
+				height: 360px;
+				width: 640px;
+				background: black;
+				display: inline-block;
+			}
+			
+			section.mass-text {
+				min-width: 300px;
+				max-width: calc(100vw - 640px - var(--window-margin) * 2);
+				height: 360px;
+				overflow-y: scroll;
+				display: inline-block;
+				padding: 0 0 0 1em;
+				box-sizing: border-box;
+			}
 		</style>
 		<script src="https://www.youtube.com/iframe_api"></script>
-	</head>
-	<body>
-		<h1>3e zondag van de Veertigdagentijd</h1>
-		<div id="player-container"></div>
 		<script>
 			function onYouTubeIframeAPIReady() {
 				console.log('api is ready')
 				const player = new YT.Player('player-container', {
 					height: '360',
 					width: '640',
-					videoId: 'x0vCbNCD3xI', //live: 5RvOtmhrt1k
+					videoId: 'iSl701PWwKo', //live: 5RvOtmhrt1k
 					events: {
 						'onReady': onPlayerReady,
 //						'onStateChange': onPlayerStateChange
@@ -102,7 +132,11 @@
 				event.target.playVideo()
 			}
 		</script>
-		<section class="mass-text">
+
+	</head>
+	<body>
+		<h1>3e zondag van de Veertigdagentijd</h1>
+		<div id="player-container"></div><section class="mass-text">
 			<h2>Openingsritus</h2>
 			<p>In de Naam van de Vader en de Zoon en de heilige Geest.</p>
 			<p class="response"> Amen.</p>
