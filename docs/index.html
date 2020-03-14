@@ -96,15 +96,10 @@
 			.hidden {
 				display: none;
 			}
-			
-			iframe {
-/*				width: 100% !important;*/
-			}
-			
+						
 			#player {
 				height: 360px;
 				width: 640px;
-				background: black;
 				display: inline-block;
 			}
 			
@@ -124,7 +119,7 @@
 					max-width: calc(100vw - 640px - var(--window-margin) * 2);
 					height: calc(100vh - 90px);
 					padding: 0 0 0 1em;
-				}
+				}				
 			}
 
 			@media only screen and (max-width: 979px) {
@@ -138,11 +133,15 @@
 						height: calc(100vh - 90px - 32px - 1.5em - var(--title-space) - var(--window-margin) * 2)
 					}
 					
-					@media only screen and (max-height: 600px) {
-						iframe {
-							height: 90px !important;
-							width: 160px !important;
-						}
+					iframe {
+						height: 90px !important;
+						width: 160px !important;
+					}
+				}
+				
+				@media only screen and (max-width: 680px) and (min-height: 601px) {
+					section.mass-text {
+						height: calc(100vh - (100vw - 40px)/16*9 - 62px - 1.5em - var(--title-space) - var(--window-margin) * 2)
 					}
 				}
 			}
