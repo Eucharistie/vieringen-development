@@ -50,11 +50,16 @@
 				margin-top: 0;
 			}
 			
-			h3, .stick {
+			.sticky-container h3, .sticky-container .stick {
 				position: sticky;
 				top: 0;
 				background: white;
 				box-shadow: white 0 0px var(--paragraph-space) var(--paragraph-space);
+			}
+			
+			/* Do not apply sticky behavior to headers that are already inside a sticky element */
+			.stick h3 {
+				position: relative;
 			}
 
 			.center { text-align: center }
@@ -87,10 +92,6 @@
 			
 			.response {
 				font-weight: bold;
-			}
-			
-			.stick h3 {
-				position: relative;
 			}
 			
 			.hidden {
@@ -225,6 +226,10 @@
 			window.addEventListener('load', function() {
 				tagElements = Array.from(document.querySelectorAll('.tag'))
 				textContainer = document.querySelector('section.mass-text')
+				
+				textContainer.addEventListener('click', event => {
+					console.log(event)
+				})
 			})
 						
 			/*
@@ -297,7 +302,7 @@
 
 			
 			<h2>Dienst van het woord</h2>
-			<div class="reading n-1">
+			<div class="reading n-1 sticky-container">
 				<h3>Eerste lezing</h3>
 				<p>Uit het boek Exodus.</p>
 				<p>
@@ -329,7 +334,7 @@ door zich af te vragen: Is de Heer nu bij ons of niet?
 				</p>
 
 			</div>
-			<div>
+			<div class="sticky-container">
 				<div class="stick">
 					<h3>Tussenzang</h3>
 					<p class="response"> Luistert heden naar zijn stem: weest niet halsstarrig.</p>
@@ -354,7 +359,7 @@ waar uw vaderen Mij wilden tarten<br>
 ofschoon zij mijn daden hadden gezien.
 				</p>
 			</div>
-			<div class="reading n-2">
+			<div class="reading n-2 sticky-container">
 				<h3>Tweede lezing</h3>
 				<p>Uit de brief van de heilige apostel Paulus aan de christenen van Rome.</p>
 				<p>
@@ -385,7 +390,7 @@ ofschoon zij mijn daden hadden gezien.
 				</p>
 			</div>
 			
-			<div>
+			<div sticky-container>
 				<h3>Vers voor het evangelie</h3>
 				<p>
 					Lof en eer zij U, Heer Jezus<br>
@@ -400,7 +405,7 @@ ofschoon zij mijn daden hadden gezien.
 					<strong class="response"> Lof en eer zij U, Heer Jezus</strong><br>
 				</p>
 			</div>
-			<div class="gospel">
+			<div class="gospel sticky-container">
 				<h3>Evangelie</h3>
 				<p>
 					De Heer zij met u.<br>
