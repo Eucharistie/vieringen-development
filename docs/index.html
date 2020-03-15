@@ -78,6 +78,7 @@
 			section.mass-text {
 /*				margin: 1em;*/
 				text-align: left;
+				position: relative;
 			}
 			
 			ol li.refrain::before, .response::before {
@@ -162,10 +163,10 @@
 				const player = new YT.Player('player', {
 					height: '360',
 					width: '640',
-					videoId: 'iSl701PWwKo', //live: 5RvOtmhrt1k
+					videoId: 'x0vCbNCD3xI', //live: 5RvOtmhrt1k
 					events: {
 						'onReady': onPlayerReady,
-//						'onStateChange': onPlayerStateChange
+						'onStateChange': onPlayerStateChange
 					},
 					playerVars: {
 						playsinline: 1
@@ -177,13 +178,71 @@
 			function onPlayerReady(event) {
 				event.target.playVideo()
 			}
+			
+			let syncInterval = null
+			function onPlayerStateChange(event) {
+				clearInterval(syncInterval)
+				if (event && event.data == 1) {
+					syncInterval = setInterval(function() {
+						const time = event.target.getCurrentTime()
+						const newIndex = findTagIndex(staticTimeline, time)
+						if (newIndex != lastTagIndex) {scrollText(newIndex)}
+						lastTagIndex = newIndex
+					}, 100)
+				}
+			}
+			
+			const staticTimeline = [
+				0,
+				3162.3620428893737,//welkom
+				3217.1792060953676,//Schuldbelijdenis
+				3607.5088791106264,
+				3692.950916809265,
+				3859.4251270686646,
+				3948.512665992371,// vers voor het evangelie
+				4001.878481856949
+			]
+			
+			let lastTagIndex = 0
+			
+			function findTagIndex(timeline, time) {
+				return binarySearch(timeline.length, index => timeline[index] > time) - 1
+			}
+			
+			function scrollText(tagIndex) {
+				textContainer.scrollTo({
+					left: 0,
+					top: tagElements[tagIndex].offsetTop,
+					behavior: 'smooth'
+				})
+			}
+			
+			let tagElements = []
+			let textContainer = null
+			window.addEventListener('load', function() {
+				tagElements = Array.from(document.querySelectorAll('.tag'))
+				textContainer = document.querySelector('section.mass-text')
+			})
+						
+			/*
+			 * Return i such that !pred(i - 1) && pred(i) && 0 <= i <= length.
+			 */
+			function binarySearch(length, pred) {
+					let lo = -1, hi = length;
+					while (1 + lo < hi) {
+							const mi = lo + ((hi - lo) >> 1);
+							if (pred(mi)) hi = mi;
+							else lo = mi;
+					}
+					return hi;
+			}
 		</script>
-
 	</head>
 	<body>
 		<h1>3e zondag van de Veertigdagentijd</h1>
 		<div id="player"></div><section class="mass-text">
-			<h2>Openingsritus</h2>
+			<h2 class="tag">Intrede</h2>
+			<h2 class="tag">Openingsritus</h2>
 			<p>In de Naam van de Vader en de Zoon en de heilige Geest.</p>
 			<p class="response"> Amen.</p>
 			<p>
@@ -193,7 +252,7 @@
 				Zij met u allen.
 			</p>
 			<p class="response"> En met uw geest.</p>
-			<h2>Schuldbelijdenis</h2>
+			<h2 class="tag">Schuldbelijdenis</h2>
 			<p>
 				Broeders en zusters, belijden wij onze zonden,<br>
 				Bekeren wij ons tot God<br>
@@ -222,7 +281,7 @@
 			<p class="response"> Amen</p>
 			
 			
-			<h2>Dienst van het woord</h2>
+			<h2 class="tag">Dienst van het woord</h2>
 			<div class="reading n-1">
 				<h3>Eerste lezing</h3>
 				<p>Uit het boek Exodus.</p>
@@ -250,7 +309,7 @@ en omdat zij de Heer hadden uitgedaagd
 door zich af te vragen: Is de Heer nu bij ons of niet?
 				</p>
 			</div>
-			<div class="psalm">
+			<div class="psalm tag">
 				<div class="stick">
 					<h3>Tussenzang</h3>
 					<p class="response"> Luistert heden naar zijn stem: weest niet halsstarrig.</p>
@@ -276,7 +335,7 @@ ofschoon zij mijn daden hadden gezien.
 				</p>
 			</div>
 			<div class="reading n-2">
-				<h3>Tweede lezing</h3>
+				<h3 class="tag">Tweede lezing</h3>
 				<p>Uit de brief van de heilige apostel Paulus aan de christenen van Rome.</p>
 				<p>
 					Broeders en zusters,
@@ -304,14 +363,14 @@ ofschoon zij mijn daden hadden gezien.
 				</p>
 			</div>
 			<div>
-				<h3>Vers voor het evangelie</h3>
+				<h3 class="tag">Vers voor het evangelie</h3>
 				<p>
 					Heer, Gij zijt werkelijk de Redder van de wereld;<br>
 					Geef mij van het levend water,<br>
 					zodat ik geen dorst meer krijg.
 				</p>
 			</div>
-			<div class="gospel">
+			<div class="gospel tag">
 				<h3>Evangelie</h3>
 				<p>
 					De Heer zij met u.<br>
