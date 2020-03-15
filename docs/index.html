@@ -206,33 +206,25 @@
 					syncInterval = setInterval(function() {
 						const time = event.target.getCurrentTime()
 						const newIndex = findTagIndex(staticTimeline, time)
-						if (newIndex != lastTagIndex) {scrollText(newIndex)}
+						if (newIndex == -1) textContainer.scrollTo({top:0, left:0, behavior: 'smooth'})
+						else if (newIndex != lastTagIndex) {scrollText(newIndex)}
 						lastTagIndex = newIndex
 					}, 100)
 				}
 			}
 			
-			const staticTimeline = [
-				0,
-				3162.3620428893737,//welkom
-				3217.1792060953676,//Schuldbelijdenis
-				3607.5088791106264,
-				3692.950916809265,
-				3859.4251270686646,
-				3948.512665992371,// vers voor het evangelie
-				4001.878481856949
-			]
+			const staticTimeline = [{"id":8,"time":145.0664539885559},{"id":22,"time":149.35380792942811},{"id":49,"time":327.7102149141693},{"id":92,"time":357.9860649885559},{"id":128,"time":372.9702181220703},{"id":147,"time":384.8218341411438},{"id":160,"time":505.13527600572206},{"id":206,"time":525.822847114441},{"id":262,"time":552.6784119885559},{"id":297,"time":572.5604251964569},{"id":336,"time":596.8134552174378},{"id":373,"time":644.6622489923706},{"id":402,"time":691.4528267997284},{"id":433,"time":731.2703021754761},{"id":498,"time":766.0318920209809},{"id":590,"time":814.3909230095368},{"id":636,"time":869.6267158836517},{"id":743,"time":943.1893228321533},{"id":855,"time":982.8690798054504},{"id":986,"time":1012.015232},{"id":1087,"time":1050.9645118970031},{"id":1394,"time":1076.6843289847411},{"id":1460,"time":1736.3774146185303},{"id":1740,"time":1767.4826655651245},{"id":1794,"time":1797.0324819008179},{"id":1836,"time":1830.0362919427796},{"id":1861,"time":1854.793786797821},{"id":1900,"time":1884.8833312822876},{"id":1935,"time":1933.6725771850129},{"id":1993,"time":1953.3300500324249},{"id":2042,"time":2072.3154871296997}]
 			
 			let lastTagIndex = 0
 			
 			function findTagIndex(timeline, time) {
-				return binarySearch(timeline.length, index => timeline[index] > time) - 1
+				return binarySearch(timeline.length, index => timeline[index].time > time) - 1
 			}
 			
 			function scrollText(tagIndex) {
 				textContainer.scrollTo({
 					left: 0,
-					top: tagElements[tagIndex].offsetTop,
+					top: staticTimeline[tagIndex].node.offsetTop,
 					behavior: 'smooth'
 				})
 			}
@@ -242,6 +234,9 @@
 			window.addEventListener('load', function() {
 				tagElements = Array.from(document.querySelectorAll('.tag'))
 				textContainer = document.querySelector('section.mass-text')
+				for (let index=0; index < staticTimeline.length; index++) {
+					staticTimeline[index].node = document.querySelector(`.tag-${staticTimeline[index].id}`)
+				}
 			})
 						
 			/*
