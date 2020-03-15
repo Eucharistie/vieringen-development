@@ -59,6 +59,10 @@
 				box-shadow: white 0 0px var(--paragraph-space) var(--paragraph-space);
 			}
 			
+			.stick.measurement, .stick.measurement h3 {
+				position: relative;
+			}
+			
 			/* Do not apply sticky behavior to headers that are already inside a sticky element */
 			.stick h3 {
 				position: relative;
@@ -238,6 +242,12 @@
 				console.log('offset to', node, node.getBoundingClientRect().top, textContainer.getBoundingClientRect().top)
 				while (parent.parentElement) {
 					parent = parent.parentElement
+					if (parent.classList.contains('stick')) {
+						parent.classList.add('measurement')
+						const offset = parent.getBoundingClientRect().top - textContainer.firstElementChild.getBoundingClientRect().top
+						parent.classList.remove('measurement')
+						return offset
+					}
 					if (parent.classList.contains('sticky-container')) {
 						let sticker = parent.querySelector('.stick, h3')
 						if (sticker) {
