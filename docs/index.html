@@ -182,6 +182,7 @@
 			
 			function onPlayerReady(event) {
 				event.target.playVideo()
+				if (textContainer == null) textContainer = document.querySelector('section.mass-text')
 				for (const node of textContainer.querySelectorAll('.tagged')) {
 					const start = node.className.indexOf('tag-')
 					const next = node.className.indexOf(' ', start)
@@ -222,11 +223,30 @@
 			}
 			
 			function scrollText(tagIndex) {
+				const node = staticTimeline[tagIndex].node
 				textContainer.scrollTo({
 					left: 0,
-					top: staticTimeline[tagIndex].node.offsetTop,
+					top: stickyOffsetFor(node),
 					behavior: 'smooth'
 				})
+			}
+			
+			function stickyOffsetFor(node) {
+				let parent = node
+				const offset = node.getBoundingClientRect().top - textContainer.firstElementChild.getBoundingClientRect().top
+				console.log('offset to', node, node.getBoundingClientRect().top, textContainer.getBoundingClientRect().top)
+				while (parent.parentElement) {
+					parent = parent.parentElement
+					if (parent.classList.contains('sticky-container')) {
+						let sticker = parent.querySelector('.stick, h3')
+						if (sticker) {
+							const bounds = sticker.getBoundingClientRect()
+							console.log(node, sticker, bounds.height)
+							return offset - bounds.height - 10
+						}
+					}
+				}
+				return offset
 			}
 			
 			let tagElements = []
