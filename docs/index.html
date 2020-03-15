@@ -39,8 +39,7 @@
 			}
 			h2 {
 				font-size: 23px;
-				color: #ad0000;
-				text-align: center;
+/*				text-align: center;*/
 			}
 			h3 {
 				border-bottom: 1px solid #DDD;
@@ -110,6 +109,10 @@
 				box-sizing: border-box;
 			}
 			
+			.role, .response:before, h2 {
+				color: #ad0000;
+			}
+			
 			@media only screen and (min-width: 980px) {
 				iframe, section.mass-text {
 					vertical-align: top;
@@ -163,7 +166,7 @@
 				const player = new YT.Player('player', {
 					height: '360',
 					width: '640',
-					videoId: 'x0vCbNCD3xI', //live: 5RvOtmhrt1k
+					videoId: 'XjVYjhIsOjs', //live: 5RvOtmhrt1k
 					events: {
 						'onReady': onPlayerReady,
 						'onStateChange': onPlayerStateChange
@@ -241,8 +244,11 @@
 	<body>
 		<h1>3e zondag van de Veertigdagentijd</h1>
 		<div id="player"></div><section class="mass-text">
-			<h2 class="tag">Intrede</h2>
-			<h2 class="tag">Openingsritus</h2>
+			<h2>Intrede</h2>
+			<p>
+				<em>God onze God toon ons Uw genade</em>
+			</p>
+			<h2>Openingsritus</h2>
 			<p>In de Naam van de Vader en de Zoon en de heilige Geest.</p>
 			<p class="response"> Amen.</p>
 			<p>
@@ -252,7 +258,9 @@
 				Zij met u allen.
 			</p>
 			<p class="response"> En met uw geest.</p>
-			<h2 class="tag">Schuldbelijdenis</h2>
+						
+			
+			<h2>Schuldbelijdenis</h2>
 			<p>
 				Broeders en zusters, belijden wij onze zonden,<br>
 				Bekeren wij ons tot God<br>
@@ -280,8 +288,15 @@
 			</p>
 			<p class="response"> Amen</p>
 			
+			<h2>Kyrie</h2>
+			<p>
+				Kyrie eleison, <strong>Kyrie eleison</strong><br>
+				Christe eleison, <strong>Christe eleison</strong><br>
+				Kyrie eleison, <strong>Kyrie eleison</strong>
+			</p>
+
 			
-			<h2 class="tag">Dienst van het woord</h2>
+			<h2>Dienst van het woord</h2>
 			<div class="reading n-1">
 				<h3>Eerste lezing</h3>
 				<p>Uit het boek Exodus.</p>
@@ -308,8 +323,13 @@ vanwege de verwijten der Israëlieten
 en omdat zij de Heer hadden uitgedaagd
 door zich af te vragen: Is de Heer nu bij ons of niet?
 				</p>
+				<p>
+					Woord van de Heer.<br>
+					<strong>Wij danken God.</strong>
+				</p>
+
 			</div>
-			<div class="psalm tag">
+			<div>
 				<div class="stick">
 					<h3>Tussenzang</h3>
 					<p class="response"> Luistert heden naar zijn stem: weest niet halsstarrig.</p>
@@ -335,7 +355,7 @@ ofschoon zij mijn daden hadden gezien.
 				</p>
 			</div>
 			<div class="reading n-2">
-				<h3 class="tag">Tweede lezing</h3>
+				<h3>Tweede lezing</h3>
 				<p>Uit de brief van de heilige apostel Paulus aan de christenen van Rome.</p>
 				<p>
 					Broeders en zusters,
@@ -358,19 +378,29 @@ ofschoon zij mijn daden hadden gezien.
 					in een bepaald geval dit van zich kunnen verkrijgen.
 					God echter bewijst zijn liefde voor ons juist hierdoor,
 					dat Christus voor ons is gestorven, toen wij nog zondaars waren.
-					Woord van de Heer.
-					Wij danken God.
+				</p>
+				<p>
+					Woord van de Heer.<br>
+					<strong>Wij danken God.</strong>
 				</p>
 			</div>
+			
 			<div>
-				<h3 class="tag">Vers voor het evangelie</h3>
+				<h3>Vers voor het evangelie</h3>
+				<p>
+					Lof en eer zij U, Heer Jezus<br>
+					<strong class="response"> Lof en eer zij U, Heer Jezus</strong><br>
+				</p>
 				<p>
 					Heer, Gij zijt werkelijk de Redder van de wereld;<br>
 					Geef mij van het levend water,<br>
 					zodat ik geen dorst meer krijg.
 				</p>
+				<p>
+					<strong class="response"> Lof en eer zij U, Heer Jezus</strong><br>
+				</p>
 			</div>
-			<div class="gospel tag">
+			<div class="gospel">
 				<h3>Evangelie</h3>
 				<p>
 					De Heer zij met u.<br>
@@ -488,7 +518,9 @@ ofschoon zij mijn daden hadden gezien.
 					en gij plukt van hun zwoegen de vruchten.
 					Vele Samaritanen uit de stad geloofden in Hem
 					om het woord van de vrouw die getuigde:
-					“Hij heeft mij alles verteld wat ik gedaan heb.”
+					“Hij heeft mij alles verteld wat ik gedaan heb.”</p>
+					
+				<p>
 					Toen dus de Samaritanen bij Hem gekomen waren,
 					verzochten zij Hem bij hen te blijven.
 					Hij bleef er dan ook twee dagen
@@ -543,7 +575,7 @@ ofschoon zij mijn daden hadden gezien.
 				En het leven van het komend rijk.<br>
 				Amen.
 			</p>
-			<p class="hidden">
+			<p>
 				Ik geloof in God,<br>
 				De almachtige Vader,<br>
 				Schepper van hemel en aarde,<br>
@@ -570,7 +602,65 @@ ofschoon zij mijn daden hadden gezien.
 				Amen.
 			</p>
 			
+			<h2>Voorbeden</h2>
+			<p><span class="role">Bisschop: </span>Laten wij bidden tot de Heer, de bron van alle leven:</p>
+			<p>
+				<span class="role">Lector: </span>Voor verbondenheid in onze Kerkgemeenschap
+				ook in deze tijden van fysieke afstand.
+				Dat een soort spiritueel internet alle christenen mag verenigen
+				in vriendschap en broederlijkheid. <br>
+				Laat ons bidden
+			</p>
+			<p>
+				Voor wie ziek is en voor wie gescheiden wordt van zijn geliefden.
+				Om warmte , zorg en nabijheid.
+				Om heling en solidariteit.<br>
+				Laat ons bidden
+			</p>
+			<p>
+				Voor allen die deze veertigdagentijd willen beleven als een tijd van verdieping.
+				Dat deze veertigdagentijd hen dichter brengt
+				bij het water van Jezus' liefde en zelfgave.
+				Dat Hij onze gids is naar het licht van Pasen.<br>
+				Laat ons bidden
+			</p>
+			<p>
+				Voor allen die zich inzetten voor wereldwijde solidariteit
+				bijvoorbeeld via de projecten die Broederlijk Delen ondersteunt.
+				Voor onze broeders en zusters
+				in Colombia, Senegal en Congo.
+				Dat Gods Rijk zich mag tonen.<br>
+				Laat ons bidden
+			</p>
+			
 			<h2>Liturgie van de Eucharistie</h2>
+			<h3>Voorbereiding van de gaven</h3>
+			<p>
+				Gezegend zijt Gij Heer, God van al wat bestaat.
+				Uit Uw milde hand hebben wij het brood ontvangen.
+				Aan U dragen wij op de vrucht van de aarde, 
+				En het werk van onze mensenhanden. 
+				Het zal voor ons worden tot brood van eeuwig leven. <br>
+				<span class="response"> Gezegend zij God in alle eeuwen.</span> <br>
+				Gezegend zijt Gij, Heer, God van al wat bestaat.
+				Uit uw milde hand hebben wij de wijn ontvangen.
+				Aan U dragen wij op de vrucht van de wijnstok
+				En het werk van mensenhanden.
+				Hij zal voor ons worden tot drank van eeuwig leven. <br>
+				<span class="response"> Gezegend zij God in alle eeuwen.</span> <br>
+			</p>
+			<h3>Gebed over de gaven</h3>
+			<p>
+				Bidt broeders dat mijn en uw offer aanvaard 
+				Kan worden door God de almachtige Vader.
+			</p>
+			<p class="response">
+				Moge de Heer het offer uit uw handen aannemen,
+				Tot lof en eer van Zijn naam
+				En tot welzijn van heel Zijn heilige Kerk.
+			</p>
+			
+			<h3>Eucharistisch gebed</h3>
 		</section>
 	</body>
 </html>
