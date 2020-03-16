@@ -1,0 +1,60 @@
+#player {
+	height: 360px;
+	width: 640px;
+	display: inline-block;
+}
+
+section.mass-text {
+	overflow-y: scroll;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+/* Two column mode: video on the left, text on the right*/
+@media only screen and (min-width: 980px) {
+	iframe, section.mass-text {
+		vertical-align: top;
+	}
+
+	section.mass-text {
+		min-width: 300px;
+		max-width: calc(100vw - 640px - var(--window-margin) * 2);
+		height: calc(100vh - 90px);
+		padding: 0 0 0 1em;
+	}				
+}
+
+/* Single column mode: video on top, text underneath */
+@media only screen and (max-width: 979px) {
+	section.mass-text {
+		margin-top: 1.5em;
+		height: calc(100vh - 360px - 32px - 1.5em - var(--title-space) - var(--window-margin) * 2)
+	}
+
+	/* When there is no space for the text under the video, make the video smaller */
+	@media only screen and (max-height: 600px) {
+		section.mass-text {
+			height: calc(100vh - 90px - 32px - 1.5em - var(--title-space) - var(--window-margin) * 2)
+		}
+
+		iframe {
+			height: 90px !important;
+			width: 160px !important;
+		}
+	}
+
+	/* Adapt the mass text height to the compensate the video downscaling */
+	@media only screen and (max-width: 680px) and (min-height: 601px) {
+		section.mass-text {
+			height: calc(100vh - (100vw - 40px)/16*9 - 62px - 1.5em - var(--title-space) - var(--window-margin) * 2)
+		}
+	}
+}
+
+/* When the window is smaller than the static video width, scale the video down */
+@media only screen and (max-width: 680px) {
+	iframe {
+		max-width: calc(100vw - 40px) !important;
+		max-height: calc((100vw - 40px)/16*9) !important;
+	}
+}

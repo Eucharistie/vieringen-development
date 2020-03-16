@@ -1,84 +1,45 @@
+---
+---
 <html>
+	<head>
+		<link href="/style/missal-text.css" rel="stylesheet">
+		<script src="/script/split-words.js"></script>
+	</head>
 	<body>
 		<section class="mass-text">
-			<h2>Intrede</h2>
+			<h3>Intrede</h3>
 			<p>
 				<em>God onze God toon ons Uw genade</em>
 			</p>
-			<h2>Openingsritus</h2>
-			<p>In de Naam van de Vader en de Zoon en de heilige Geest.</p>
-			<p class="response"> Amen.</p>
-			<p>
-				De genade van de Heer Jezus Christus,<br>
-				De liefde van God<br>
-				En de gemeenschap van de Heilige Geest<br>
-				Zij met u allen.
-			</p>
-			<p class="response"> En met uw geest.</p>
-						
 			
-			<h2>Schuldbelijdenis</h2>
-			<p>
-				Broeders en zusters, belijden wij onze zonden,<br>
-				Bekeren wij ons tot God<br>
-				Om de heilige eucharistie goed te kunnen vieren:
-			</p>
-			<p>
-				Ik belijd voor de almachtige God,<br>
-				En voor u allen,<br>
-				Dat ik gezondigd heb,<br>
-				In woord en gedachte,<br>
-				In doen en laten,<br>
-				Door mijn schuld,<br>
-				Door mijn schuld,<br>
-				Door mijn grote schuld.<br>
-				Daarom smeek ik<br>
-				De heilige Maria altijd maagd,<br>
-				Alle engelen en heiligen,<br>
-				En u, broeders en zusters,<br>
-				Voor mij te bidden tot de Heer onze God.
-			</p>
-			<p>
-				Moge de almachtige God zich
-				Over ons ontfermen, onze zonden vergeven
-				En ons geleiden tot het eeuwig leven.
-			</p>
-			<p class="response"> Amen</p>
-			
-			<h2>Kyrie</h2>
-			<p>
-				Kyrie eleison, <strong>Kyrie eleison</strong><br>
-				Christe eleison, <strong>Christe eleison</strong><br>
-				Kyrie eleison, <strong>Kyrie eleison</strong>
-			</p>
-
+			{% include_relative openingsritus.html %}
 			
 			<h2>Dienst van het woord</h2>
 			<div class="reading n-1 sticky-container">
 				<h3>Eerste lezing</h3>
 				<p>Uit het boek Exodus.</p>
 				<p>
-In die dagen,
-leden de Israëlieten tijdens de woestijntocht hevige dorst.
-Zij bleven tegen Mozes morren en zeiden:
-“Waarom hebt gij ons weggevoerd uit Egypte
-als wij toch met kinderen en vee van dorst moeten sterven?”
-Mozes klaagde zijn nood bij de Heer:
-“Wat moet ik toch aan met dit volk?
-Ze staan op het punt mij te stenigen.”
-De Heer gaf Mozes ten antwoord:
-“Ga met enkelen van Israëls oudsten voor het volk uit,
-neem in uw hand de staf waarmee ge de Nijl geslagen hebt
-en begeef u op weg.
-Ik zal ginds, voor uw ogen,
-op een rots staan, op de Horeb.
-Sla op die rots:
-er zal water uitstromen, zodat de mensen kunnen drinken.”
-Mozes deed dat in het bijzijn van Israëls oudsten.
-Hij noemde de plaats Massa en Meriba
-vanwege de verwijten der Israëlieten
-en omdat zij de Heer hadden uitgedaagd
-door zich af te vragen: Is de Heer nu bij ons of niet?
+					In die dagen,
+					leden de Israëlieten tijdens de woestijntocht hevige dorst.
+					Zij bleven tegen Mozes morren en zeiden:
+					“Waarom hebt gij ons weggevoerd uit Egypte
+					als wij toch met kinderen en vee van dorst moeten sterven?”
+					Mozes klaagde zijn nood bij de Heer:
+					“Wat moet ik toch aan met dit volk?
+					Ze staan op het punt mij te stenigen.”
+					De Heer gaf Mozes ten antwoord:
+					“Ga met enkelen van Israëls oudsten voor het volk uit,
+					neem in uw hand de staf waarmee ge de Nijl geslagen hebt
+					en begeef u op weg.
+					Ik zal ginds, voor uw ogen,
+					op een rots staan, op de Horeb.
+					Sla op die rots:
+					er zal water uitstromen, zodat de mensen kunnen drinken.”
+					Mozes deed dat in het bijzijn van Israëls oudsten.
+					Hij noemde de plaats Massa en Meriba
+					vanwege de verwijten der Israëlieten
+					en omdat zij de Heer hadden uitgedaagd
+					door zich af te vragen: Is de Heer nu bij ons of niet?
 				</p>
 				<p>
 					Woord van de Heer.<br>
@@ -92,23 +53,23 @@ door zich af te vragen: Is de Heer nu bij ons of niet?
 					<p class="response"> Luistert heden naar zijn stem: weest niet halsstarrig.</p>
 				</div>
 				<p>
-Komt, laat ons de Heer met gejubel begroeten,<br>
-juichen wij toe de Rots van ons heil.<br>
-Laat ons verschijnen voor Hem met een lofzang,<br>
-Hem met liederen eren.
+					Komt, laat ons de Heer met gejubel begroeten,<br>
+					juichen wij toe de Rots van ons heil.<br>
+					Laat ons verschijnen voor Hem met een lofzang,<br>
+					Hem met liederen eren.
 				</p>
 				<p>
-Komt, laat ons aanbiddend ter aarde vallen,<br>
-neerknielen voor Hem die ons schiep.<br>
-Hij is onze God en wij zijn volk,<br>
-Hij is de herder en wij zijn kudde.
+					Komt, laat ons aanbiddend ter aarde vallen,<br>
+					neerknielen voor Hem die ons schiep.<br>
+					Hij is onze God en wij zijn volk,<br>
+					Hij is de herder en wij zijn kudde.
 				</p>
 				<p>
-Luistert heden dan naar zijn stem:<br>
-weest niet halsstarrig als eens in Meriba,<br>
-zoals in Massa in de woestijn;<br>
-waar uw vaderen Mij wilden tarten<br>
-ofschoon zij mijn daden hadden gezien.
+					Luistert heden dan naar zijn stem:<br>
+					weest niet halsstarrig als eens in Meriba,<br>
+					zoals in Massa in de woestijn;<br>
+					waar uw vaderen Mij wilden tarten<br>
+					ofschoon zij mijn daden hadden gezien.
 				</p>
 			</div>
 			<div class="reading n-2 sticky-container">
@@ -141,8 +102,7 @@ ofschoon zij mijn daden hadden gezien.
 					<strong>Wij danken God.</strong>
 				</p>
 			</div>
-			
-			<div sticky-container>
+			<div class="sticky-container">
 				<h3>Vers voor het evangelie</h3>
 				<p>
 					Lof en eer zij U, Heer Jezus<br>
@@ -289,133 +249,44 @@ ofschoon zij mijn daden hadden gezien.
 				</p>
 			</div>
 			
-			<h3>Geloofsbelijdenis</h3>
-			<p class="hidden">
-				Ik geloof in één God,<br>
-				De almachtige Vader,<br>
-				Schepper van hemel en aarde,<br>
-				Van al wat zichtbaar en onzichtbaar is. <br>
-				En in één Heer, Jezus Christus,<br>
-				Eniggeboren Zoon van God,<br>
-				Voor alle tijden geboren uit de Vader.<br>
-				God uit God, <br>
-				Licht uit licht,<br>
-				Ware God uit de ware God, <br>
-				Geboren, niet geschapen, <br>
-				Één in wezen met de Vader,<br>
-				En door wie alles geschapen is. <br>
-				Hij is voor ons, mensen, en omwille van ons heil, <br>
-				Uit de hemel neergedaald. <br>
-				Hij heeft het vlees aangenomen<br>
-				Door de heilige Geest <br>
-				Uit de maagd Maria en is mens geworden. <br>
-				Hij werd voor ons gekruisigd,<br>
-				Hij heeft geleden onder Pontius Pilatus en is begraven. <br>
-				Hij is verrezen op de derde dag,<br>
-				Volgens de Schriften.<br>
-				Hij is opgevaren ten hemel,<br>
-				Zit aan de rechterhand van de Vader.<br>
-				Hij zal wederkomen in heerlijkheid<br>
-				Om te oordelen levenden en doden; <br>
-				En aan zijn rijk komt geen einde.<br>
-				Ik geloof in de heilige Geest, <br>
-				Die Heer is en het leven geeft;<br>
-				Die voortkomt uit de Vader en de Zoon;<br>
-				Die met de Vader en de Zoon tezamen<br>
-				Wordt aanbeden en verheerlijkt;<br>
-				Die gesproken heeft door de profeten. <br>
-				Ik geloof in de ene heilige,<br>
-				Katholieke en apostolische kerk. <br>
-				Ik belijd een doopsel <br>
-				Tot vergeving van de zonden.<br>
-				Ik verwacht de opstanding van de doden<br>
-				En het leven van het komend rijk.<br>
-				Amen.
-			</p>
-			<p>
-				Ik geloof in God,<br>
-				De almachtige Vader,<br>
-				Schepper van hemel en aarde,<br>
-				En in Jezus Christus,<br>
-				Zijn enige Zoon, onze Heer,<br>
-				Die ontvangen is van de Heilige Geest,<br>
-				Geboren uit de maagd Maria,<br>
-				Die geleden heeft onder Pontius Pilatus,<br>
-				Is gekruisigd,<br>
-				Gestorven en begraven,<br>
-				Die nedergedaald is ter helle,<br>
-				De derde dag verrezen is uit de doden,<br>
-				Die opgestegen is ten hemel,<br>
-				Zit aan de rechterhand van God,<br>
-				De almachtige Vader,<br>
-				Vandaar zal Hij komen oordelen <br>
-				De levenden en de doden.<br>
-				Ik geloof in de Heilige Geest,<br>
-				De heilige katholieke kerk,<br>
-				De gemeenschap van de heiligen,<br>
-				De vergeving van de zonden,<br>
-				De verrijzenis van het lichaam,<br>
-				En het eeuwig leven.<br>
-				Amen.
-			</p>
+			<h3>Homelie</h3>
 			
-			<h3>Voorbeden</h3>
-			<p><span class="role">Bisschop: </span>Laten wij bidden tot de Heer, de bron van alle leven:</p>
-			<p>
-				<span class="role">Lector: </span>Voor verbondenheid in onze Kerkgemeenschap
-				ook in deze tijden van fysieke afstand.
-				Dat een soort spiritueel internet alle christenen mag verenigen
-				in vriendschap en broederlijkheid. <br>
-				Laat ons bidden
-			</p>
-			<p>
-				Voor wie ziek is en voor wie gescheiden wordt van zijn geliefden.
-				Om warmte , zorg en nabijheid.
-				Om heling en solidariteit.<br>
-				Laat ons bidden
-			</p>
-			<p>
-				Voor allen die deze veertigdagentijd willen beleven als een tijd van verdieping.
-				Dat deze veertigdagentijd hen dichter brengt
-				bij het water van Jezus' liefde en zelfgave.
-				Dat Hij onze gids is naar het licht van Pasen.<br>
-				Laat ons bidden
-			</p>
-			<p>
-				Voor allen die zich inzetten voor wereldwijde solidariteit
-				bijvoorbeeld via de projecten die Broederlijk Delen ondersteunt.
-				Voor onze broeders en zusters
-				in Colombia, Senegal en Congo.
-				Dat Gods Rijk zich mag tonen.<br>
-				Laat ons bidden
-			</p>
+			{% include_relative credo-apostolicum.html %}
+
+			<div class="voorbeden">
+				<h3>Voorbeden</h3>
+				<p><span class="role">Bisschop: </span>Laten wij bidden tot de Heer, de bron van alle leven:</p>
+				<p>
+					<span class="role">Lector: </span>Voor verbondenheid in onze Kerkgemeenschap
+					ook in deze tijden van fysieke afstand.
+					Dat een soort spiritueel internet alle christenen mag verenigen
+					in vriendschap en broederlijkheid. <br>
+					Laat ons bidden
+				</p>
+				<p>
+					Voor wie ziek is en voor wie gescheiden wordt van zijn geliefden.
+					Om warmte , zorg en nabijheid.
+					Om heling en solidariteit.<br>
+					Laat ons bidden
+				</p>
+				<p>
+					Voor allen die deze veertigdagentijd willen beleven als een tijd van verdieping.
+					Dat deze veertigdagentijd hen dichter brengt
+					bij het water van Jezus' liefde en zelfgave.
+					Dat Hij onze gids is naar het licht van Pasen.<br>
+					Laat ons bidden
+				</p>
+				<p>
+					Voor allen die zich inzetten voor wereldwijde solidariteit
+					bijvoorbeeld via de projecten die Broederlijk Delen ondersteunt.
+					Voor onze broeders en zusters
+					in Colombia, Senegal en Congo.
+					Dat Gods Rijk zich mag tonen.<br>
+					Laat ons bidden
+				</p>
+			</div>
 			
-			<h2>Eucharistische Dienst</h2>
-			<h3>Offerande</h3>
-			<p>
-				Gezegend zijt Gij Heer, God van al wat bestaat.
-				Uit Uw milde hand hebben wij het brood ontvangen.
-				Aan U dragen wij op de vrucht van de aarde, 
-				En het werk van onze mensenhanden. 
-				Het zal voor ons worden tot brood van eeuwig leven. <br>
-				<span class="response"> Gezegend zij God in alle eeuwen.</span> <br>
-				Gezegend zijt Gij, Heer, God van al wat bestaat.
-				Uit uw milde hand hebben wij de wijn ontvangen.
-				Aan U dragen wij op de vrucht van de wijnstok
-				En het werk van mensenhanden.
-				Hij zal voor ons worden tot drank van eeuwig leven. <br>
-				<span class="response"> Gezegend zij God in alle eeuwen.</span> <br>
-			</p>
-			<h3>Gebed over de gaven</h3>
-			<p>
-				Bidt broeders dat mijn en uw offer aanvaard 
-				Kan worden door God de almachtige Vader.
-			</p>
-			<p class="response">
-				Moge de Heer het offer uit uw handen aannemen,
-				Tot lof en eer van Zijn naam
-				En tot welzijn van heel Zijn heilige Kerk.
-			</p>
+			{% include_relative eucharistische-dienst.html %}
 			
 			<h2>Eucharistisch gebed</h2>
 		</section>

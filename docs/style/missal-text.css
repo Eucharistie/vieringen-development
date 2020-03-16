@@ -1,0 +1,103 @@
+html {
+	font-family: "Optima", serif;
+	--title-space: 20px;
+	--paragraph-space: 8px;
+	--window-margin: 20px;
+	text-align: center;
+}
+
+html, body {
+	hanging-punctuation: allow-end;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	margin: var(--window-margin);
+}
+
+@font-face {
+	font-family: "Liturgy";
+	src: url("assets/liturgy.woff2") format("woff2");
+}
+
+h1, h2, h3 {
+	font-family: "Palatino", serif;
+	margin-top: var(--title-space);
+	margin-bottom: var(--paragraph-space);
+}
+h1, h3 {
+		font-variant: small-caps
+}
+h1 {
+	font-size: 32px;
+	text-align: left;
+}
+h2 {
+	font-size: 23px;
+/*				text-align: center;*/
+}
+h3 {
+	border-bottom: 1px solid #DDD;
+	font-size: 23px;
+}
+
+h1, h2:first-of-type {
+	margin-top: 0;
+}
+
+.sticky-container h3, .sticky-container .stick {
+	position: sticky;
+	top: 0;
+	background: white;
+	box-shadow: white 0 0px var(--paragraph-space) var(--paragraph-space);
+}
+
+/* Disable stickyness for javascript measurements */
+.stick.js-measurement, .stick.js-measurement h3 {
+	position: relative;
+}
+
+/* Do not apply sticky behavior to headers that are already inside a sticky element */
+.stick h3 {
+	position: relative;
+}
+
+.center { text-align: center }
+.right p { text-align-last: right }
+.italic {
+	font-style: italic
+}
+
+p, li, td {
+	font-size: 17px;
+	line-height: 1.2;
+}
+
+p {
+	text-align: justify;
+	margin-top: var(--paragraph-space);
+	margin-bottom: var(--paragraph-space);
+}
+
+section.mass-text {
+	text-align: left;
+	position: relative;
+}
+
+ol li.refrain::before, .response::before {
+	content: 'R.';
+	font-family: "Liturgy", "Palatino", serif;
+}
+
+.response {
+	font-weight: bold;
+}
+
+.role, .response:before, h2 {
+	color: #ad0000;
+}
+
+.hidden {
+	display: none;
+}
