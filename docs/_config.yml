@@ -27,6 +27,10 @@ url: "https://vieringen.eucharistie.info" # the base hostname & protocol for you
 #twitter_username: jekyllrb
 github_username:  eucharistie
 
+collections:
+  vieringen:
+    output: true
+
 # Build settings
 theme: minima
 plugins:

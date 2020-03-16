@@ -45,7 +45,7 @@ function onPlayerStateChange(event) {
 	if (event && event.data == 1) {
 		syncInterval = setInterval(function() {
 			const time = event.target.getCurrentTime()
-			const newIndex = findTagIndex(staticTimeline, time)
+			const newIndex = findTagIndex(downloadedTimeline, time)
 			if (newIndex == -1) textContainer.scrollTo({top:0, left:0, behavior: 'smooth'})
 			else if (newIndex != lastTagIndex) {scrollText(newIndex)}
 			lastTagIndex = newIndex
@@ -58,9 +58,9 @@ function findTagIndex(timeline, time) {
 	return binarySearch(timeline.length, index => time < timeline[index].time) - 1
 }
 
-// Scroll to the tag given by its index in staticTimeline
+// Scroll to the tag given by its index in the downloaded timeline
 function scrollText(tagIndex) {
-	const node = staticTimeline[tagIndex].node
+	const node = downloadedTimeline[tagIndex].node
 	textContainer.scrollTo({
 		left: 0,
 		top: stickyOffsetFor(node),
@@ -102,15 +102,51 @@ function stickyOffsetFor(node) {
 	return offset
 }
 
-let tagElements = []
 let textContainer = null
 window.addEventListener('load', function() {
-	tagElements = Array.from(document.querySelectorAll('.tag'))
 	textContainer = document.querySelector('section.mass-text')
-	for (let index=0; index < staticTimeline.length; index++) {
-		staticTimeline[index].node = document.querySelector(`.tag-${staticTimeline[index].id}`)
-	}
+	setInterval(downloadRemainingParts, 30000)
+	downloadRemainingParts()
 })
+
+var timelinePartsDownloaded = 0
+const downloadedTimeline = []
+let timelineDownloader = null
+function downloadRemainingParts() {
+	downloadPartialTimeline(timelinePartsDownloaded, tryToDownloadNext)
+	
+	function tryToDownloadNext() {
+		timelinePartsDownloaded += 1
+		downloadRemainingParts()
+	}
+}
+
+function downloadPartialTimeline(partIndex, completionCallback) {
+	const request = new XMLHttpRequest()
+	request.addEventListener('load', load)
+	request.open("GET", new URL(`timeline/${partIndex}.json`, document.baseURI).href)
+	request.send()
+	console.log('donwloading', partIndex)
+	
+	function load() {
+		if (request.status == 200) {
+			try {
+				const tags = JSON.parse(this.responseText)
+				for (const {id, time} of tags) {
+					const node = document.querySelector(`.tag-${id}`)
+					downloadedTimeline.push({id, time, node})
+				}
+				completionCallback()
+			} catch (error) {
+				console.error(error)
+			}
+		} else if (request.status == 404) {
+			console.log(`timeline ${partIndex} does not exist (yet)`)
+		} else {
+			console.error('unexpected status code', request.status)
+		}
+	}
+}
 
 /*
  * Return i such that !pred(i - 1) && pred(i) && 0 <= i <= length.
