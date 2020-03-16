@@ -3,7 +3,7 @@ function onYouTubeIframeAPIReady() {
 	const player = new YT.Player('player', {
 		height: '360',
 		width: '640',
-		videoId: 'XjVYjhIsOjs', //live: 5RvOtmhrt1k
+		videoId, //live: 5RvOtmhrt1k
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
