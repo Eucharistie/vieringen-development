@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "Liturgy";
+	src: url("liturgy.woff2") format("woff2");
+}
+
 html {
 	font-family: "Optima", serif;
 	--title-space: 20px;
@@ -14,11 +19,6 @@ html, body {
 
 html {
 	margin: var(--window-margin);
-}
-
-@font-face {
-	font-family: "Liturgy";
-	src: url("assets/liturgy.woff2") format("woff2");
 }
 
 h1, h2, h3 {
