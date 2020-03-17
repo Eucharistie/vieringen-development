@@ -38,7 +38,7 @@ iframe {
 	.mass-text {
 		right: var(--window-margin);
 		width: calc(100vw - var(--video-width) - var(--window-margin) * 3);
-		height: calc(100vh - var(--window-margin) * 2);
+		height: unset;
 		margin-top: 0;
 	}
 	
