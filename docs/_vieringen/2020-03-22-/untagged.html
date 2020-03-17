@@ -9,8 +9,8 @@ location: "Kathedraal van Antwerpen"
 		<meta charset="utf-8"/>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="/style/missal-text.css" rel="stylesheet">
-		<link href="/style/video-layout.css" rel="stylesheet">
+		<link href="{{site.baseurl}}/style/missal-text.css" rel="stylesheet">
+		<link href="{{site.baseurl}}/style/video-layout.css" rel="stylesheet">
 		
 		<script>
 			// List of tags with their corresponding timecode (in seconds)
@@ -19,13 +19,16 @@ location: "Kathedraal van Antwerpen"
 			const videoId = 'XjVYjhIsOjs'
 		</script>
 		<script src="https://www.youtube.com/iframe_api"></script>
-		<script src="/script/sync-scroll.js"></script>
-		<script src="/script/split-words.js"></script>
+		<script src="{{site.baseurl}}/script/sync-scroll.js"></script>
+		<script src="{{site.baseurl}}/script/split-words.js"></script>
 	</head>
 <!-- Auto generated body | Don't edit use splitWords on untagged html -->
 	<body>
-		<h1>{{page.title}}</h1>
-		<div id="player"></div><section class="mass-text">
+		<section class="left-column">
+			<h1>{{page.title}}</h1>
+			<div id="player"></div>
+		</section>
+		<section class="mass-text">
 			<h3>Intrede</h3>
 			
 			{% include openingsritus.html %}
