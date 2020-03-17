@@ -18,8 +18,9 @@ layout: default
     <ul class="post-list">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       {%- assign vieringen = site.vieringen | reverse -%}
-      {%- for post in vieringen -%}
+			{%- for post in vieringen -%}
       
+      {% unless post.hidden %}
       <li>
         <span class="post-meta">{{ post.date | date: date_format }} - {{ post.location }}</span>
         <h3>
@@ -28,6 +29,7 @@ layout: default
           </a>
         </h3>
       </li>
+      {% endunless %}
       
       {%- endfor -%}
     </ul>
