@@ -23,6 +23,10 @@ iframe {
 		padding: 0;
 	}
 	
+	body {
+		overflow: hidden;
+	}
+	
 	section.left-column, section.mass-text {
 		position: absolute;
 		top: var(--window-margin);
