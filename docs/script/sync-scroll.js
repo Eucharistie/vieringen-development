@@ -46,7 +46,7 @@ function onPlayerStateChange(event) {
 		syncInterval = setInterval(function() {
 			const time = event.target.getCurrentTime()
 			const newIndex = findTagIndex(downloadedTimeline, time)
-			else if (newIndex != lastTagIndex) {
+			if (newIndex != lastTagIndex) {
 				if (newIndex == -1)
 					textContainer.scrollTo({top:0, left:0, behavior: 'smooth'})
 				else
