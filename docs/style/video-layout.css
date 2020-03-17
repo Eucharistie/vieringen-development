@@ -1,60 +1,56 @@
-#player {
-	height: 360px;
-	width: 640px;
-	display: inline-block;
+html {
+	--video-aspect: calc(16 / 9);
+	
+	--video-width:  calc(100vw - var(--window-margin) * 2);
+	--video-height: calc(var(--video-width) / var(--video-aspect));
 }
 
-section.mass-text {
+iframe {	
+	width:  var(--video-width) !important;
+	height: var(--video-height) !important;
+}
+
+.mass-text {
+	margin-top: 1em;
 	overflow-y: scroll;
-	display: inline-block;
-	box-sizing: border-box;
+	height: calc(100vh - var(--video-height) - 1em - var(--window-margin) * 2);
 }
 
-/* Two column mode: video on the left, text on the right*/
-@media only screen and (min-width: 980px) {
-	iframe, section.mass-text {
-		vertical-align: top;
+@media only screen and (min-aspect-ratio: 16/12) {
+	html {
+		--video-width: 70vw;
+		text-align: left;
+		padding: 0;
 	}
-
-	section.mass-text {
-		min-width: 300px;
-		max-width: calc(100vw - 640px - var(--window-margin) * 2);
-		height: calc(100vh - 90px);
-		padding: 0 0 0 1em;
-	}				
-}
-
-/* Single column mode: video on top, text underneath */
-@media only screen and (max-width: 979px) {
-	section.mass-text {
-		margin-top: 1.5em;
-		height: calc(100vh - 360px - 32px - 1.5em - var(--title-space) - var(--window-margin) * 2)
+	
+	section.left-column, section.mass-text {
+		position: absolute;
+		top: var(--window-margin);
+		bottom: var(--window-margin);
 	}
-
-	/* When there is no space for the text under the video, make the video smaller */
-	@media only screen and (max-height: 600px) {
-		section.mass-text {
-			height: calc(100vh - 90px - 32px - 1.5em - var(--title-space) - var(--window-margin) * 2)
-		}
-
-		iframe {
-			height: 90px !important;
-			width: 160px !important;
+	
+	section.left-column {
+		left: var(--window-margin);
+		width: var(--video-width);
+		overflow-y: scroll;
+	}
+	
+	.mass-text {
+		right: var(--window-margin);
+		width: calc(100vw - var(--video-width) - var(--window-margin) * 3);
+		height: calc(100vh - var(--window-margin) * 2);
+		margin-top: 0;
+	}
+	
+	@media only screen and (max-width: 1100px) {
+		html {
+			--video-width: 50vw;
 		}
 	}
 
-	/* Adapt the mass text height to the compensate the video downscaling */
-	@media only screen and (max-width: 680px) and (min-height: 601px) {
-		section.mass-text {
-			height: calc(100vh - (100vw - 40px)/16*9 - 62px - 1.5em - var(--title-space) - var(--window-margin) * 2)
+	@media only screen and (min-aspect-ratio: 160/63) {
+		html {
+			--video-width: calc((100vh - var(--window-margin) * 2) * var(--video-aspect));
 		}
-	}
-}
-
-/* When the window is smaller than the static video width, scale the video down */
-@media only screen and (max-width: 680px) {
-	iframe {
-		max-width: calc(100vw - 40px) !important;
-		max-height: calc((100vw - 40px)/16*9) !important;
 	}
 }

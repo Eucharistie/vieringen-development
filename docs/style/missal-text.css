@@ -12,13 +12,12 @@ html {
 }
 
 html, body {
-	hanging-punctuation: allow-end;
 	margin: 0;
 	padding: 0;
 }
 
 html {
-	margin: var(--window-margin);
+	padding: var(--window-margin);
 }
 
 h1, h2, h3 {
@@ -83,6 +82,11 @@ p {
 section.mass-text {
 	text-align: left;
 	position: relative;
+	
+	hanging-punctuation: allow-end;
+	/* Add some space for the haning punctuation */
+	margin-right: -10px;
+	padding-right: 10px;
 }
 
 ol li.refrain::before, .response::before {
