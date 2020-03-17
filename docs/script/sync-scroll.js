@@ -75,21 +75,19 @@ function stickyOffsetFor(node) {
 	const offset = node.getBoundingClientRect().top - textContainer.firstElementChild.getBoundingClientRect().top
 
 	// If there is a sticky element adjust offset. Otherwise return the basic offset
+	let h3 = false
 	while (parent.parentElement) {
 		parent = parent.parentElement
+		// If it's a header, remember this for later
+		if (parent.tagName.toLowerCase() == 'h3') h3 = parent
 		// If it's a sticking node itself
-		if (parent.classList.contains('stick') || parent.cl) {
-			// Disable stickyness and return element to its original non-sticky position
-			parent.classList.add('js-measurement')
-			// Measure position
-			const offset = parent.getBoundingClientRect().top - textContainer.firstElementChild.getBoundingClientRect().top
-			// Enable stickyness again
-			parent.classList.remove('js-measurement')
-			// Early exit
-			return offset
+		if (parent.classList.contains('stick')) {
+			return measureNonSticking(parent) // Early exit
 		}
 		// If there is a sticky title on top, find it and add it's height to offset, then do an early exit
 		if (parent.classList.contains('sticky-container')) {
+			if (h3) return measureNonSticking(h3)
+			
 			let sticker = parent.querySelector('.stick, h3')
 			if (sticker) {
 				const bounds = sticker.getBoundingClientRect()
@@ -99,6 +97,16 @@ function stickyOffsetFor(node) {
 	}
 
 	// return basic offset
+	return offset
+}
+
+function measureNonSticking(node) {
+	// Disable stickyness and return element to its original non-sticky position
+	node.classList.add('js-measurement')
+	// Measure position
+	const offset = node.getBoundingClientRect().top - textContainer.firstElementChild.getBoundingClientRect().top
+	// Enable stickyness again
+	node.classList.remove('js-measurement')
 	return offset
 }
 

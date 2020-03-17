@@ -54,7 +54,7 @@ h1, h2:first-of-type {
 }
 
 /* Disable stickyness for javascript measurements */
-.stick.js-measurement, .stick.js-measurement h3 {
+.stick.js-measurement, .sticky-container h3.js-measurement {
 	position: relative;
 }
 
