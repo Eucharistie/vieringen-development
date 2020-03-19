@@ -10,8 +10,7 @@ iframe {
 }
 
 section.left-column {
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: hidden;
 }
 
 @media only screen and (min-aspect-ratio: 16/12) {
@@ -38,6 +37,7 @@ section.left-column {
 	section.left-column {
 		left: 20px;
 		width: 70vw; /*re*/
+		overflow-y: auto;
 	}
 	
 	.mass-text {
