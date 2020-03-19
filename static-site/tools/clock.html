@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<style>
+			p {
+				font-size: 50px;
+				font-family: "Lucida Console", Monaco, monospace;
+				text-shadow: white 0 0 6px;
+				text-align: center
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			const clock = document.createElement('p')			
+			document.body.appendChild(clock)
+			
+			function displayClock() {
+				clock.innerHTML = Date.now()
+				window.requestAnimationFrame(displayClock)
+			}
+			
+			window.requestAnimationFrame(displayClock)
+		</script>
+	</body>
+</html>

@@ -46,3 +46,10 @@
 	background: rgb(214, 242, 208);
 	border-radius: 5px;
 }
+
+@media (prefers-color-scheme: dark) {
+	.linked {
+		background: unset;
+		color: rgb(131, 211, 107);
+	}
+}
