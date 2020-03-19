@@ -29,5 +29,6 @@
 }
 
 .linked {
-	color: #005800;
+	color: rgb(201, 231, 216);
+	border-radius: 5px;
 }
