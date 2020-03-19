@@ -32,3 +32,11 @@
 	background: rgb(214, 242, 208);
 	border-radius: 5px;
 }
+
+h2, h3 {
+	font-size: 35px;
+}
+p, li, td {
+	font-size: 26px;
+	line-height: 1.2;
+}
