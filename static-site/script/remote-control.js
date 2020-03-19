@@ -20,25 +20,26 @@ function init() {
 		}
 	})
 	
-	massText.addEventListener('scroll', function(event) {
-		console.log('scroll')
-		if (isInControlMode) event.preventDefault();
-	})
-	
 	// Make text clickable to synchronize the video to the text. See logTag
-	if (textContainer == null) textContainer = document.querySelector('section.mass-text')
-	for (const node of textContainer.querySelectorAll('.tagged')) {
+	for (const node of massText.querySelectorAll('.tagged')) {
 		const start = node.className.indexOf('tag-')
 		const next = node.className.indexOf(' ', start)
 		const end = next == -1 ? node.className.length : next;
 		const id = parseInt(node.className.substr(start + 4, end))
-		node.addEventListener('click', click => logTag(id, window.ytPlayer.getCurrentTime()))
+		node.addEventListener('click', click => logTag(id, window.ytPlayer.getCurrentTime(), node))
 	}
 }
 
 const tags = []
-function logTag(id, time) {
-	const log = {id, time}
-	tags.push(log)
-	console.log(log)
+function logTag(id, time, node) {
+	const existingIndex = tags.findIndex(tag => tag.id == id)
+	if (existingIndex == -1) {
+		const log = {id, time}
+		tags.push(log)
+		node.classList.add('linked')
+		console.log(log)
+	} else {
+		tags.splice(existingIndex, 1)
+		node.classList.remove('linked')
+	}
 }

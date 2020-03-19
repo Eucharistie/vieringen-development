@@ -1,20 +1,22 @@
-html.control {	
-	background: #FBB;
-}
+@supports (-webkit-touch-callout: none) {
+	html.control {	
+		background: red;
+	}
 
-html.control body::before {
-	content: ' ';
-	
-	position: fixed;
-	top: 10px;
-	bottom: 10px;
-	left: 10px;
-	right: 10px;
-	
-	border-radius: 10px;
-	background: white;
-	
-	z-index: -10;
+	html.control body::before {
+		content: ' ';
+
+		position: fixed;
+		top: 10px;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+
+		border-radius: 10px;
+		background: white;
+
+		z-index: -10;
+	}
 }
 
 .control .tagged:hover {
@@ -24,4 +26,8 @@ html.control body::before {
 
 .control section.mass-text, .control body {
 	overflow: hidden;
+}
+
+.linked {
+	color: #005800;
 }
