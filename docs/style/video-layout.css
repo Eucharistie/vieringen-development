@@ -16,6 +16,11 @@ iframe {
 	height: calc(100vh - var(--video-height) - 1em - var(--window-margin) * 2);
 }
 
+section.left-column {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 @media only screen and (min-aspect-ratio: 16/12) {
 	html {
 		--video-width: 70vw;

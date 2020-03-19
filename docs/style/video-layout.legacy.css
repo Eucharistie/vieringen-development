@@ -9,6 +9,11 @@ iframe {
 	height: calc(100vh - ((100vw - 20px * 2) / (16 / 9)) - 1em - 20px * 2);
 }
 
+section.left-column {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 @media only screen and (min-aspect-ratio: 16/12) {
 	iframe {	
 		width:  70vw !important; /*re*/
