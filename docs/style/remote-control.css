@@ -1,6 +1,6 @@
-@supports (-webkit-touch-callout: none) {
+/*@supports (-webkit-touch-callout: none) {*/
 	html.control {	
-		background: red;
+		background: rgb(214, 242, 208);
 	}
 
 	html.control body::before {
@@ -17,9 +17,9 @@
 
 		z-index: -10;
 	}
-}
+/*}*/
 
-.control .tagged:hover {
+.tagged:hover {
 	cursor: crosshair;
 	text-decoration: underline;
 }
@@ -29,6 +29,6 @@
 }
 
 .linked {
-	background: rgb(201, 231, 216);
+	background: rgb(214, 242, 208);
 	border-radius: 5px;
 }
