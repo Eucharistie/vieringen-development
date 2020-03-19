@@ -1,0 +1,27 @@
+html.control {	
+	background: #FBB;
+}
+
+html.control body::before {
+	content: ' ';
+	
+	position: fixed;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	
+	border-radius: 10px;
+	background: white;
+	
+	z-index: -10;
+}
+
+.control .tagged:hover {
+	cursor: crosshair;
+	text-decoration: underline;
+}
+
+.control section.mass-text, .control body {
+	overflow: hidden;
+}
