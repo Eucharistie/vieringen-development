@@ -39,7 +39,7 @@ iframe {
 	.mass-text {
 		right: 20px;
 		width: calc(100vw - 70vw - 20px * 3); /*re*/
-		height: unset;
+		height: auto;
 		margin-top: 0;
 	}
 	
