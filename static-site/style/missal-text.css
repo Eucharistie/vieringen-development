@@ -105,3 +105,21 @@ ol li.refrain::before, .response::before {
 .hidden {
 	display: none;
 }
+
+@media (prefers-color-scheme: dark) {
+	html {
+		--background-color: #1e1e1e;
+		background: var(--background-color);
+		color: white;
+	}
+
+	.role, .response:before, h2 {
+		color: #e22f75;
+	}
+	
+	.sticky-container h3, .sticky-container .stick {
+		background: var(--background-color);
+		box-shadow: var(--background-color) 0 0px var(--paragraph-space) var(--paragraph-space);
+	}
+
+}
