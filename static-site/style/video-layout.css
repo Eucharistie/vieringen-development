@@ -1,0 +1,60 @@
+html {
+	--video-aspect: calc(16 / 9);
+	
+	--video-width:  calc(100vw - var(--window-margin) * 2);
+	--video-height: calc(var(--video-width) / var(--video-aspect));
+}
+
+iframe {	
+	width:  var(--video-width) !important;
+	height: var(--video-height) !important;
+}
+
+.mass-text {
+	margin-top: 1em;
+	overflow-y: scroll;
+	height: calc(100vh - var(--video-height) - 1em - var(--window-margin) * 2);
+}
+
+@media only screen and (min-aspect-ratio: 16/12) {
+	html {
+		--video-width: 70vw;
+		text-align: left;
+		padding: 0;
+	}
+	
+	body {
+		overflow: hidden;
+	}
+	
+	section.left-column, section.mass-text {
+		position: absolute;
+		top: var(--window-margin);
+		bottom: var(--window-margin);
+	}
+	
+	section.left-column {
+		left: var(--window-margin);
+		width: var(--video-width);
+		overflow-y: scroll;
+	}
+	
+	.mass-text {
+		right: var(--window-margin);
+		width: calc(100vw - var(--video-width) - var(--window-margin) * 3);
+		height: unset;
+		margin-top: 0;
+	}
+	
+	@media only screen and (max-width: 1100px) {
+		html {
+			--video-width: 50vw;
+		}
+	}
+
+	@media only screen and (min-aspect-ratio: 160/63) {
+		html {
+			--video-width: calc((100vh - var(--window-margin) * 2) * var(--video-aspect));
+		}
+	}
+}
