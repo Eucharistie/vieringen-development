@@ -117,8 +117,14 @@ function measureNonSticking(node) {
 let textContainer = null
 window.addEventListener('load', function() {
 	textContainer = document.querySelector('section.mass-text')
-	setInterval(downloadRemainingParts, 30000)
-	downloadRemainingParts()
+	if (staticTimeline && staticTimeline.length > 1) {
+		// When processed use the published staticTimeline
+		appendRawTimeline(staticTimeline)
+	} else {
+		// When live download live partial files
+		setInterval(downloadRemainingParts, 30000)
+		downloadRemainingParts()
+	}
 })
 
 var timelinePartsDownloaded = 0
@@ -133,6 +139,13 @@ function downloadRemainingParts() {
 	}
 }
 
+function appendRawTimeline(timeline) {
+	for (const {id, time} of timeline) {
+		const node = document.querySelector(`.tag-${id}`)
+		downloadedTimeline.push({id, time, node})
+	}
+}
+
 function downloadPartialTimeline(partIndex, completionCallback) {
 	const request = new XMLHttpRequest()
 	request.addEventListener('load', load)
@@ -144,10 +157,7 @@ function downloadPartialTimeline(partIndex, completionCallback) {
 		if (request.status == 200) {
 			try {
 				const tags = JSON.parse(this.responseText)
-				for (const {id, time} of tags) {
-					const node = document.querySelector(`.tag-${id}`)
-					downloadedTimeline.push({id, time, node})
-				}
+				appendRawTimeline(tags)
 				completionCallback()
 			} catch (error) {
 				console.error(error)
