@@ -38,7 +38,6 @@ section.left-column {
 	section.left-column {
 		left: 20px;
 		width: 70vw; /*re*/
-		overflow-y: scroll;
 	}
 	
 	.mass-text {

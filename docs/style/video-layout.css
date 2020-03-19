@@ -41,7 +41,6 @@ section.left-column {
 	section.left-column {
 		left: var(--window-margin);
 		width: var(--video-width);
-		overflow-y: scroll;
 	}
 	
 	.mass-text {
