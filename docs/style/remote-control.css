@@ -1,5 +1,5 @@
 html.control {	
-	background: red;
+	background: #FBB;
 }
 
 html.control body::before {
@@ -15,4 +15,13 @@ html.control body::before {
 	background: white;
 	
 	z-index: -10;
+}
+
+.control .tagged:hover {
+	cursor: crosshair;
+	text-decoration: underline;
+}
+
+.control section.mass-text, .control body {
+	overflow: hidden;
 }

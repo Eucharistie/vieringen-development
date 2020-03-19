@@ -5,7 +5,6 @@ function onYouTubeIframeAPIReady() {
 		width: '640',
 		videoId, //live: 5RvOtmhrt1k
 		events: {
-			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
 		},
 		playerVars: {
@@ -14,26 +13,6 @@ function onYouTubeIframeAPIReady() {
 	});
 	window.ytPlayer = player
 }
-
-function onPlayerReady(event) {
-	// Make text clickable to synchronize the video to the text. See logTag
-	if (textContainer == null) textContainer = document.querySelector('section.mass-text')
-	for (const node of textContainer.querySelectorAll('.tagged')) {
-		const start = node.className.indexOf('tag-')
-		const next = node.className.indexOf(' ', start)
-		const end = next == -1 ? node.className.length : next;
-		const id = parseInt(node.className.substr(start + 4, end))
-		node.addEventListener('click', click => logTag(id, event.target.getCurrentTime()))
-	}
-}
-
-const tags = []
-function logTag(id, time) {
-	const log = {id, time}
-	tags.push(log)
-	console.log(log)
-}
-
 
 let syncInterval = null
 let lastTagIndex = 0
