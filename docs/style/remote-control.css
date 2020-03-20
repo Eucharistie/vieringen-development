@@ -17,6 +17,16 @@
 
 		z-index: -10;
 	}
+
+	body {
+		overflow: hidden;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html.control body::before {
+			background: var(--background-color);
+		}
+	}
 	
 	span.tagged:hover {
 		text-decoration: none;
@@ -28,8 +38,13 @@
 		}
 		p, li, td {
 			font-size: 26px;
-			line-height: 1.2;
+			line-height: 1.5;
+			
 		}
+	}
+
+	h1 {
+		display: none;
 	}
 }
 
@@ -52,4 +67,31 @@
 		background: unset;
 		color: rgb(131, 211, 107);
 	}
+}
+
+.live-mode .left-column {
+	display: none;
+}
+
+.live-mode .mass-text {
+	margin-top: 0;
+	position: absolute;
+	height: unset;
+	top: var(--window-margin);
+	bottom: var(--window-margin);
+	left: var(--window-margin);
+	right: var(--window-margin);
+}
+
+.timecode-preview {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: var(--window-margin);
+	text-align: right;
+	opacity: 0.4;
+}
+
+.live-mode .timecode-preview {
+	display: unset;
 }

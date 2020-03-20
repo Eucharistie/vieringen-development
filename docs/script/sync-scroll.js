@@ -16,12 +16,13 @@ function onYouTubeIframeAPIReady() {
 
 let syncInterval = null
 let lastTagIndex = 0
+let enableScrollSync = !navigator.userAgent.contains('Mass-remote-controller-iOS')
 function onPlayerStateChange(event) {
 	clearInterval(syncInterval)
 
 	// When the player starts playing
 	// start polling the youtube time and lookup corresponding tag
-	if (event && event.data == 1) {
+	if (enableScrollSync && event && event.data == 1) {
 		syncInterval = setInterval(function() {
 			const time = event.target.getCurrentTime()
 			const newIndex = findTagIndex(downloadedTimeline, time)
