@@ -102,7 +102,7 @@ window.addEventListener('load', function() {
 		appendRawTimeline(staticTimeline)
 	} else {
 		// When live download live partial files
-		setInterval(downloadUpdatingTimeline, 1000)
+		setInterval(downloadUpdatingTimeline, 500)
 		downloadUpdatingTimeline()
 	}
 })
