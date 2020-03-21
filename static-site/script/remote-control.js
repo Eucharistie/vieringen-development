@@ -53,7 +53,7 @@ function storeTag(id, time, node) {
 		node.classList.remove('linked')
 	}
 	if (isInLiveMode && nextUpload === null) {
-		nextUpload = setTimeout(uploadTimeline, 100)
+		nextUpload = setTimeout(uploadTimeline, 20000)
 	}
 }
 

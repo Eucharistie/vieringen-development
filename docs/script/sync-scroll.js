@@ -16,7 +16,7 @@ function onYouTubeIframeAPIReady() {
 
 let syncInterval = null
 let lastTagIndex = 0
-let enableScrollSync = !navigator.userAgent.contains('Mass-remote-controller-iOS')
+let enableScrollSync = !navigator.userAgent.includes('Mass-remote-controller-iOS')
 function onPlayerStateChange(event) {
 	clearInterval(syncInterval)
 
@@ -102,14 +102,43 @@ window.addEventListener('load', function() {
 		appendRawTimeline(staticTimeline)
 	} else {
 		// When live download live partial files
-		setInterval(downloadRemainingParts, 30000)
-		downloadRemainingParts()
+		setInterval(downloadUpdatingTimeline, 30000)
+		downloadUpdatingTimeline()
 	}
 })
 
-var timelinePartsDownloaded = 0
 const downloadedTimeline = []
 let timelineDownloader = null
+function downloadUpdatingTimeline() {
+	const request = new XMLHttpRequest()
+	request.addEventListener('load', load)
+	request.open("GET", new URL(`timeline.json`, document.baseURI).href)
+	request.send()
+	console.log('downloading timeline')
+	
+	function load() {
+		if (request.status == 200) {
+			try {
+				const tags = JSON.parse(this.responseText)
+				replaceRawTimeline(tags)
+			} catch (error) {
+				console.error(error)
+			}
+		} else if (request.status == 404) {
+			console.log(`timeline does not exist (yet)`)
+		} else {
+			console.error('unexpected status code', request.status)
+		}
+	}
+}
+
+function replaceRawTimeline(timeline) {
+	downloadedTimeline.splice(0, downloadedTimeline.length)
+	appendRawTimeline(timeline) 
+}
+
+/// Partial downloading is temporarily not used
+var timelinePartsDownloaded = 0
 function downloadRemainingParts() {
 	downloadPartialTimeline(timelinePartsDownloaded, tryToDownloadNext)
 	
