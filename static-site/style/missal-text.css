@@ -89,6 +89,10 @@ section.mass-text {
 	padding-right: 10px;
 }
 
+section.mass-text:first-child {
+	margin-top: 0;
+}
+
 ol li.refrain::before, .response::before {
 	content: 'R.';
 	font-family: "Liturgy", "Palatino", serif;
