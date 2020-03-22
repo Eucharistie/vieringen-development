@@ -41,7 +41,7 @@ h3 {
 	font-size: 23px;
 }
 
-h1, h2:first-of-type {
+h1, .mass-text > *:first-of-type {
 	margin-top: 0;
 }
 
