@@ -6,13 +6,13 @@
 
 @mixin resize-video($width, $height) {
 	#player {	
-		width:  $width  !important;
-		height: $height !important;
+		width:  calc(#{$width})  !important;
+		height: calc(#{$height}) !important;
 	}
 }
 
-$video-width: calc(100vw - #{$window-margin} * 2);
-$video-height: calc(#{$video-width} / #{$video-aspect});
+$video-width: "(" 100vw - #{$window-margin} * 2 ")";
+$video-height: #{$video-width} / $video-aspect;
 
 @include resize-video($video-width, $video-height);
 
@@ -29,7 +29,7 @@ section.left-column {
 // Two column layout
 @media only screen and (min-aspect-ratio: 16/12) {
 	$video-width: 70vw;
-	$video-height: calc(#{$video-width} / #{$video-aspect});
+	$video-height: #{$video-width} / $video-aspect;
 	@include resize-video($video-width, $video-height);
 
 	html {
@@ -65,15 +65,15 @@ section.left-column {
 	
 	@media only screen and (max-width: 1100px) {
 		$video-width: 50vw;
-		$video-height: calc(#{$video-width} / #{$video-aspect});
+		$video-height: #{$video-width} / $video-aspect;
 
 		@include resize-video($video-width, $video-height);
 		.mass-text { width: mass-text-width($video-width); }
 	}
 
 	@media only screen and (min-aspect-ratio: 160/63) {
-		$video-height: calc(100vh - #{$window-margin} * 2);
-		$video-width: calc(#{$video-height} * #{$video-aspect});
+		$video-height: "(" 100vh - #{$window-margin} * 2 ")";
+		$video-width: #{$video-height} * $video-aspect;
 
 		@include resize-video($video-width, $video-height);
 		.mass-text { width: mass-text-width($video-width); }
