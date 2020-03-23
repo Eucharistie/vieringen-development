@@ -69,6 +69,7 @@ section.left-column {
 
 		@include resize-video($video-width, $video-height);
 		.mass-text { width: mass-text-width($video-width); }
+		section.left-column { width: calc(#{$video-width}); }
 	}
 
 	@media only screen and (min-aspect-ratio: 160/63) {
@@ -77,5 +78,6 @@ section.left-column {
 
 		@include resize-video($video-width, $video-height);
 		.mass-text { width: mass-text-width($video-width); }
+		section.left-column { width: calc(#{$video-width}); }
 	}
 }
