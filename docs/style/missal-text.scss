@@ -9,16 +9,11 @@
 
 html {
 	font-family: "Optima", serif;
-	text-align: center;
 }
 
 html, body {
 	margin: 0;
 	padding: 0;
-}
-
-html {
-	padding: $window-margin;
 }
 
 h1, h2, h3 {
@@ -36,7 +31,7 @@ h3 {
 	border-bottom: 1px solid #DDD;
 }
 
-h1, h2:first-child, h3:first-child {
+h2:first-child, h3:first-child {
 	margin-top: 0;
 }
 
@@ -76,12 +71,7 @@ p {
 
 section.mass-text {
 	text-align: left;
-	position: relative;
-	
-	hanging-punctuation: allow-end;
-	/* Add some space for the haning punctuation */
-	margin-right: -10px;
-	padding-right: 10px;
+	position: relative;	
 }
 
 ol li.refrain::before, .response::before {

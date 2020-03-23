@@ -4,80 +4,137 @@
 @import "video-layout-variables";
 @import "missal-text-variables";
 
-@mixin resize-video($width, $height) {
+$video-width: 100vw;
+$video-height: 56.25vw;
+
+.player-container {
+	position: relative;
+
 	#player {	
-		width:  calc(#{$width})  !important;
-		height: calc(#{$height}) !important;
-	}
+		width:  $video-width  !important;
+		height: $video-height !important;
+		max-height: 100vh;
+	}	
 }
 
-$video-width: "(" 100vw - #{$window-margin} * 2 ")";
-$video-height: #{$video-width} / $video-aspect;
-
-@include resize-video($video-width, $video-height);
-
-.mass-text {
-	margin-top: 1em;
+.mass-text-container {
+	margin: 1em;
 	overflow-y: scroll;
-	height: calc(100vh - #{$video-height} - 1em - #{$window-margin} * 2);
+	height: calc(100vh - #{$video-height} - 2em);
 }
 
-section.left-column {
-	overflow: hidden;
+h1 {
+	margin-left:  $window-margin ;
+	margin-right: $window-margin ;
 }
 
-// Two column layout
+html {
+	transition-property: background, color;
+	transition-duration: 1s;
+	min-height: 100%;
+}
+
+// Not enough height for text under video
 @media only screen and (min-aspect-ratio: 16/12) {
-	$video-width: 70vw;
-	$video-height: #{$video-width} / $video-aspect;
-	@include resize-video($video-width, $video-height);
 
-	html {
-		text-align: left;
-		padding: 0;
-	}
-	
-	body {
-		overflow: hidden;
-	}
-	
-	section.left-column, section.mass-text {
-		position: absolute;
-		top: $window-margin;
-		bottom: $window-margin;
-	}
-	
-	section.left-column {
-		left: $window-margin;
-		width: #{$video-width};
-		overflow-y: auto;
-	}
-	
-	@function mass-text-width($video-width) {
-		@return calc(100vw - #{$video-width} - #{$window-margin} * 3);
-	}
-	.mass-text {
-		right: $window-margin;
-		width: mass-text-width($video-width);
-		height: auto;
-		margin-top: 0;
-	}
-	
-	@media only screen and (max-width: 1100px) {
+	// small screens use two column layout
+	@media only screen and (max-width: 59.999em) {
 		$video-width: 50vw;
-		$video-height: #{$video-width} / $video-aspect;
+		$video-height: 28.125vw;
 
-		@include resize-video($video-width, $video-height);
-		.mass-text { width: mass-text-width($video-width); }
-		section.left-column { width: calc(#{$video-width}); }
+		h1 {
+			width: 50vw;
+			font-size: 1.5em;
+		}
+
+		.player-container {
+			position: static;
+			text-align: left;
+		
+			#player {
+				width:  $video-width  !important;
+				height: $video-height !important;
+			}
+		}
+
+		.mass-text-container {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 50vw;
+			right: $window-margin;
+			height: auto;
+		}
 	}
 
-	@media only screen and (min-aspect-ratio: 160/63) {
-		$video-height: "(" 100vh - #{$window-margin} * 2 ")";
-		$video-width: #{$video-height} * $video-aspect;
+	// big screens use overlay
+	@media only screen and (min-width: 60em) {
 
-		@include resize-video($video-width, $video-height);
-		.mass-text { width: mass-text-width($video-width); }
-		section.left-column { width: calc(#{$video-width}); }
+		html {
+			background: black;
+			color: white;
+		}	
+
+		.player-container:hover .mass-text-container {
+			top: calc(#{$window-margin} + 60px);
+			bottom: calc(#{$window-margin} + 40px);
+		}
+
+		.mass-text-container {
+			color: black;
+			height: auto;
+		
+			position: absolute;
+			top: $window-margin;
+			bottom: $window-margin;
+			right: $window-margin;
+			width: 20em;
+			margin: 0;
+
+			transition-property: top, bottom;
+			transition-duration: 200ms;
+
+			.background {
+				background: rgba(255, 255, 255, 0.75);
+				-moz-backdrop-filter: blur(15px);
+				-webkit-backdrop-filter: blur(15px);
+				backdrop-filter: blur(15px);
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+			}
+
+			.mass-text {
+				position: absolute;
+				top: 1em;
+				bottom: 1em;
+				right: 1em;
+				left: 1em;
+		
+				mix-blend-mode: multiply;
+				overflow-y: scroll;
+			}
+		}
+
+		@media screen and (max-height: 56.25vw) {
+			.player-container #player {
+				width: 177.7778vh !important;
+			}
+
+			@media screen and (min-width: calc(177.7778vh + 20em + #{$window-margin})) {
+				.player-container:hover .mass-text-container {
+					top: $window-margin;
+					bottom: $window-margin;
+				}
+				
+				$padding: calc((100vw - 177.7778vh - 20em - #{$window-margin}) / 2);
+				.mass-text-container {
+					left: calc(177.7778vh + #{$window-margin});
+					right: auto;
+				}
+				.player-container {left: $padding;}
+			}
+		}
+
 	}
 }
