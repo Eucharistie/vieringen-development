@@ -21,6 +21,11 @@ $video-height: 56.25vw;
 	margin: 1em;
 	overflow-y: scroll;
 	height: calc(100vh - #{$video-height} - 2em);
+
+	.mass-text {
+		height: 100%;
+		overflow-y: scroll;
+	}
 }
 
 h1 {
@@ -110,9 +115,16 @@ html {
 				bottom: 1em;
 				right: 1em;
 				left: 1em;
+				height: auto;
 		
 				mix-blend-mode: multiply;
-				overflow-y: scroll;
+			}
+		}
+
+		@media screen and (prefers-color-scheme: dark) {
+			.sticky-container h3, .sticky-container .stick {
+				background: white;
+				box-shadow: white 0 0px $paragraph-space $paragraph-space;
 			}
 		}
 
