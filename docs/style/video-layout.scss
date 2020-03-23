@@ -1,0 +1,81 @@
+---
+---
+
+@import "video-layout-variables";
+@import "missal-text-variables";
+
+@mixin resize-video($width, $height) {
+	#player {	
+		width:  $width  !important;
+		height: $height !important;
+	}
+}
+
+$video-width: calc(100vw - #{$window-margin} * 2);
+$video-height: calc(#{$video-width} / #{$video-aspect});
+
+@include resize-video($video-width, $video-height);
+
+.mass-text {
+	margin-top: 1em;
+	overflow-y: scroll;
+	height: calc(100vh - #{$video-height} - 1em - #{$window-margin} * 2);
+}
+
+section.left-column {
+	overflow: hidden;
+}
+
+// Two column layout
+@media only screen and (min-aspect-ratio: 16/12) {
+	$video-width: 70vw;
+	$video-height: calc(#{$video-width} / #{$video-aspect});
+	@include resize-video($video-width, $video-height);
+
+	html {
+		text-align: left;
+		padding: 0;
+	}
+	
+	body {
+		overflow: hidden;
+	}
+	
+	section.left-column, section.mass-text {
+		position: absolute;
+		top: $window-margin;
+		bottom: $window-margin;
+	}
+	
+	section.left-column {
+		left: $window-margin;
+		width: #{$video-width};
+		overflow-y: auto;
+	}
+	
+	@function mass-text-width($video-width) {
+		@return calc(100vw - #{$video-width} - #{$window-margin} * 3);
+	}
+	.mass-text {
+		right: $window-margin;
+		width: mass-text-width($video-width);
+		height: auto;
+		margin-top: 0;
+	}
+	
+	@media only screen and (max-width: 1100px) {
+		$video-width: 50vw;
+		$video-height: calc(#{$video-width} / #{$video-aspect});
+
+		@include resize-video($video-width, $video-height);
+		.mass-text { width: mass-text-width($video-width); }
+	}
+
+	@media only screen and (min-aspect-ratio: 160/63) {
+		$video-height: calc(100vh - #{$window-margin} * 2);
+		$video-width: calc(#{$video-height} * #{$video-aspect});
+
+		@include resize-video($video-width, $video-height);
+		.mass-text { width: mass-text-width($video-width); }
+	}
+}

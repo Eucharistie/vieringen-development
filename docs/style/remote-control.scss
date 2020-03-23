@@ -1,3 +1,7 @@
+---
+---
+@import 'missal-text-variables';
+
 @supports (-webkit-touch-callout: none) {
 	html.control {	
 		background: rgb(214, 242, 208);
@@ -18,17 +22,13 @@
 		z-index: -10;
 	}
 
-	html {
-		--paragraph-space: 21px;
-	}
-
 	body {
 		overflow: hidden;
 	}
 
 	@media (prefers-color-scheme: dark) {
 		html.control body::before {
-			background: var(--background-color);
+			background: $dark-background-color;
 		}
 	}
 	
@@ -81,17 +81,17 @@
 	margin-top: 0;
 	position: absolute;
 	height: unset;
-	top: var(--window-margin);
-	bottom: var(--window-margin);
-	left: var(--window-margin);
-	right: var(--window-margin);
+	top: $window-margin;
+	bottom: $window-margin;
+	left: $window-margin;
+	right: $window-margin;
 }
 
 .timecode-preview {
 	display: none;
 	position: absolute;
 	top: 0;
-	right: var(--window-margin);
+	right: $window-margin;
 	text-align: right;
 	opacity: 0.4;
 }

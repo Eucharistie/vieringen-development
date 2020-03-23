@@ -1,13 +1,14 @@
+---
+---
 @font-face {
 	font-family: "Liturgy";
 	src: url("liturgy.woff2") format("woff2");
 }
 
+@import 'missal-text-variables';
+
 html {
 	font-family: "Optima", serif;
-	--title-space: 20px;
-	--paragraph-space: 8px;
-	--window-margin: 20px;
 	text-align: center;
 }
 
@@ -17,28 +18,22 @@ html, body {
 }
 
 html {
-	padding: var(--window-margin);
+	padding: $window-margin;
 }
 
 h1, h2, h3 {
 	font-family: "Palatino", serif;
-	margin-top: var(--title-space);
-	margin-bottom: var(--paragraph-space);
-}
-h1, h3 {
-		font-variant: small-caps
+	margin-top: $title-space;
+	margin-bottom: $paragraph-space;
 }
 h1 {
-	font-size: 32px;
 	text-align: left;
 }
-h2 {
-	font-size: 23px;
-/*				text-align: center;*/
+h1, h3 {
+	font-variant: small-caps
 }
 h3 {
 	border-bottom: 1px solid #DDD;
-	font-size: 23px;
 }
 
 h1, h2:first-child, h3:first-child {
@@ -49,7 +44,7 @@ h1, h2:first-child, h3:first-child {
 	position: sticky;
 	top: 0;
 	background: white;
-	box-shadow: white 0 0px var(--paragraph-space) var(--paragraph-space);
+	box-shadow: white 0 0px $paragraph-space $paragraph-space;
 }
 
 /* Disable stickyness for javascript measurements */
@@ -75,8 +70,8 @@ p, li, td {
 
 p {
 	text-align: justify;
-	margin-top: var(--paragraph-space);
-	margin-bottom: var(--paragraph-space);
+	margin-top: $paragraph-space;
+	margin-bottom: $paragraph-space;
 }
 
 section.mass-text {
@@ -108,8 +103,7 @@ ol li.refrain::before, .response::before {
 
 @media (prefers-color-scheme: dark) {
 	html {
-		--background-color: #1e1e1e;
-		background: var(--background-color);
+		background: $dark-background-color;
 		color: white;
 	}
 
@@ -118,8 +112,8 @@ ol li.refrain::before, .response::before {
 	}
 	
 	.sticky-container h3, .sticky-container .stick {
-		background: var(--background-color);
-		box-shadow: var(--background-color) 0 0px var(--paragraph-space) var(--paragraph-space);
+		background: $dark-background-color;
+		box-shadow: $dark-background-color 0 0px $paragraph-space $paragraph-space;
 	}
 
 }

@@ -33,6 +33,10 @@ collections:
 
 # Build settings
 theme: minima
+
+sass:
+  sass_dir: style
+
 #plugins:
 #  - jekyll-feed
 
