@@ -1,0 +1,35 @@
+---
+title: "Aangepaste video met lezingen"
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ page.title }}</title>
+		<meta charset="utf-8"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{site.baseurl}}/style/missal-text.css" rel="stylesheet">
+		<link href="{{site.baseurl}}/style/video-layout.css" rel="stylesheet">
+		
+		<script>
+			// List of tags with their corresponding timecode (in seconds)
+			const staticTimeline = [{"id":0,"time":-10},{"id":0,"time":-5}]
+		</script>
+		<script src="{{site.baseurl}}/script/daily-gospel.js"></script>
+		<script src="{{site.baseurl}}/script/sync-scroll.js"></script>
+		<script src="https://www.youtube.com/iframe_api"></script>
+	</head>
+<!-- Auto generated body | Don't edit use splitWords on untagged html -->
+	<body>
+        <h1>{{page.title}}</h1>
+		<div class="player-container">
+			<div id="player"></div>
+			<div class="mass-text-container">
+				<div class=background></div>
+				<section class="mass-text"></section>
+			</div>
+		</div>
+		
+		<script src="https://unpkg.com/smoothscroll-polyfill/dist/smoothscroll.min.js"></script>
+	</body>
+</html>
