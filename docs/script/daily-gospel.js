@@ -101,11 +101,28 @@ function typesetReadings(readings) {
         fragment.appendChild(header)
         header.innerHTML = reading.title
         const paragraph = document.createElement('p')
+        if (reading.type == 'reading' && reading.origin) {
+            const originParagraph = paragraph.cloneNode(false);
+            fragment.appendChild(originParagraph)
+            originParagraph.innerHTML = reading.origin
+        }
         fragment.appendChild(paragraph)
         for (const verse of reading.verses) {
-            const span = document.createElement('span')
-            paragraph.appendChild(span)
-            span.innerHTML = verse.content.replace('\n', '<br/>')
+            const lines = verse.content.split('\n')
+            addLine(0)
+            for (let i = 1; i<lines.length; i++) {
+                const lineBreak = document.createElement('br')
+                paragraph.appendChild(lineBreak)
+                addLine(i)
+            }
+            function addLine(i) {
+                const text = lines[i]
+                if (text.length > 0) {
+                    const span = document.createElement('span')
+                    paragraph.appendChild(span)
+                    span.innerHTML = text
+                }
+            }
         }
     }
     console.log(fragment)

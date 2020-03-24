@@ -133,7 +133,7 @@ html {
 				width: 177.7778vh !important;
 			}
 
-			@media screen and (min-width: calc(177.7778vh + 20em + #{$window-margin})) {
+			@media screen and (min-width: calc(177.7778vh + 20em + #{$window-margin} * 2)) {
 				.player-container:hover .mass-text-container {
 					top: $window-margin;
 					bottom: $window-margin;
