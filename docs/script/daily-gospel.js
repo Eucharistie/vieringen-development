@@ -1,4 +1,14 @@
-downloadDayInfo(getQueryStringValue('date'), showReadings)
+let dateString = getQueryStringValue('date')
+if (dateString == "") {
+    const now = new Date()
+    const month = (now.getMonth() + 1).toString().padStart(2, '0')
+    const year = now.getFullYear()
+    const day = now.getDate().toString().padStart(2, '0')
+    dateString = year + '-' + month + '-' + day
+}
+console.log('showing readings for', dateString)
+downloadDayInfo(dateString, showReadings)
+
 
 window.addEventListener('load', function() {
     const iframe = document.getElementById('player')
