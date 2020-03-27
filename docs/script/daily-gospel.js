@@ -28,20 +28,25 @@ function downloadDayInfo(date, completionCallback) {
 function showReadings(info) {
     const readings = parseReadings(info)
     const text = typesetReadings(readings)
+
+    console.log(info)
     if (document.readyState == "complete") {
-        replaceText(text)
+        replaceText(text, info.liturgic_title)
     } else {
-        try { replaceText(text) } catch (error) {}
+        try { replaceText(text, info.liturgic_title) } catch (error) {}
         document.addEventListener('load', function() {
-            replaceText(text)
+            replaceText(text, info.liturgic_title)
         })
     }
 }
 
-function replaceText(text) {
+function replaceText(text, title) {
     const massText = document.querySelector('.mass-text')
+    const titleElement = document.querySelector('h1')
     massText.innerHTML = ''
     massText.appendChild(text)
+    titleElement.innerHTML = title
+    document.title = title
 }
 
 const tagExpression = /\[\[(\w+) (\d+),(\d+)([a-z]*)\]\]/g

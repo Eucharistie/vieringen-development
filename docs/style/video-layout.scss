@@ -7,6 +7,31 @@
 $video-width: 100vw;
 $video-height: 56.25vw;
 
+.bg-blue {
+	background: #438dcc;
+	a {
+		color: white;
+		text-decoration: none;
+
+		svg, span {
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 8px;
+		}
+	}
+
+	.Header-item {
+		display: inline-block;
+		vertical-align: middle;
+		fill: white;
+	}
+
+	.container-lg {
+		padding: 16px;
+		max-width: 1012px;
+	}
+}
+
 .player-container {
 	position: relative;
 
@@ -34,7 +59,7 @@ h1 {
 }
 
 html {
-	transition-property: background, color;
+	transition-property: background-color, color;
 	transition-duration: 1s;
 	min-height: 100%;
 }
@@ -53,7 +78,7 @@ html {
 		}
 
 		.player-container {
-			position: static;
+			position: relative;
 			text-align: left;
 		
 			#player {
@@ -67,8 +92,11 @@ html {
 			top: 0;
 			bottom: 0;
 			left: 50vw;
-			right: $window-margin;
+			right: 0;
 			height: auto;
+
+			margin-top: 0;
+			margin-bottom: 0;
 		}
 	}
 
