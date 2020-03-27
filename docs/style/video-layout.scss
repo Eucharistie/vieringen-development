@@ -9,6 +9,9 @@ $video-height: 56.25vw;
 
 .bg-blue {
 	background: #438dcc;
+	transition-property: background-color;
+	transition-duration: 1s;
+
 	a {
 		color: white;
 		text-decoration: none;
@@ -31,6 +34,15 @@ $video-height: 56.25vw;
 		max-width: 1012px;
 	}
 }
+
+$darkblue: #183a57;
+
+@media screen and (prefers-color-scheme: dark) {
+	.bg-blue {
+		background: $darkblue;
+	}
+}
+
 
 .player-container {
 	position: relative;
@@ -106,7 +118,11 @@ html {
 		html {
 			background: black;
 			color: white;
-		}	
+		}
+
+		.bg-blue {
+			background: black;
+		}
 
 		.player-container:hover .mass-text-container {
 			top: calc(#{$window-margin} + 60px);

@@ -1,5 +1,9 @@
 downloadDayInfo(getQueryStringValue('date'), showReadings)
-const videoId = getQueryStringValue('youtubeID');
+
+window.addEventListener('load', function() {
+    const iframe = document.getElementById('player')
+    iframe.src = 'https://www.youtube.com/embed/live_stream?channel=' + getQueryStringValue('ytChannel')
+})
 
 function downloadDayInfo(date, completionCallback) {
     const request = new XMLHttpRequest()

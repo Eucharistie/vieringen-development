@@ -16,8 +16,6 @@ title: "Aangepaste video met lezingen"
 			const staticTimeline = [{"id":0,"time":-10},{"id":0,"time":-5}]
 		</script>
 		<script src="{{site.baseurl}}/script/daily-gospel.js"></script>
-		<script src="{{site.baseurl}}/script/sync-scroll.js"></script>
-		<script src="https://www.youtube.com/iframe_api"></script>
 	</head>
 <!-- Auto generated body | Don't edit use splitWords on untagged html -->
 	<body>
@@ -49,7 +47,7 @@ title: "Aangepaste video met lezingen"
 
         <h1>{{page.title}}</h1>
 		<div class="player-container">
-			<div id="player"></div>
+			<iframe id="player" width="560" height="315" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe>
 			<div class="mass-text-container">
 				<div class=background></div>
 				<section class="mass-text"></section>
