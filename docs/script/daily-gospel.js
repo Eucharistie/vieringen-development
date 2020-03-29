@@ -12,7 +12,7 @@ downloadDayInfo(dateString, showReadings)
 
 window.addEventListener('load', function() {
     const iframe = document.getElementById('player')
-    iframe.src = 'https://www.youtube.com/embed/live_stream?channel=' + getQueryStringValue('ytChannel')
+    iframe.src = 'https://www.youtube.com/embed/live_stream?playsinline=1&channel=' + getQueryStringValue('ytChannel')
 })
 
 function downloadDayInfo(date, completionCallback) {
